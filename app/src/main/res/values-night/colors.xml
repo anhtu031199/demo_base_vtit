@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="primary">#FFFFFF</color>
+    <color name="primary_reverse">#000000</color>
+    <color name="secondary">#99EBEBF5</color>
+    <color name="tertiary">#4DEBEBF5</color>
+    <color name="quaternary">#2EEBEBF5</color>
+
+    <color name="color_2E335A">#2E335A</color>
+    <color name="color_1C1B33">#1C1B33</color>
+    <color name="color_5936B4">#5936B4</color>
+    <color name="color_362A84">#362A84</color>
+    <color name="color_3658B1">#3658B1</color>
+    <color name="color_C159EC">#C159EC</color>
+    <color name="color_AEC9FF">#AEC9FF</color>
+    <color name="color_083072">#083072</color>
+    <color name="color_F7CBFD">#F7CBFD</color>
+    <color name="color_7758D1">#7758D1</color>
+
+
+    <!--  Semantic  -->
+    <color name="success">#49BE20</color>
+    <color name="warning">#F58E16</color>
+    <color name="error">#FA3434</color>
+    <color name="info">#5C9CE6</color>
+
+</resources>
