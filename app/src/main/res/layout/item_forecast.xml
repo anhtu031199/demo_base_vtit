@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="90dp"
+        android:layout_height="230dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_item_forecast">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_25_hor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_30_hor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.30" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_55_hor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_75_hor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_time_forecast"
+            style="@style/style_text_bold_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12 AM"
+            android:textColor="@color/primary_reverse"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_25_hor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_image_forecast"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="-10dp"
+
+            android:src="@drawable/ic_weather_small_day_rainy"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_55_hor"
+            app:layout_constraintTop_toTopOf="@id/guideline_30_hor" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_rain_percent_forecast"
+            style="@style/style_text_bold_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-5dp"
+            android:text="30%"
+            android:textColor="@color/color_40CBD8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline_55_hor" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_degree_forecast"
+            style="@style/style_text_regular_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="19\u00B0"
+            android:textColor="@color/primary_reverse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline_75_hor" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -14,6 +14,7 @@
     <color name="color_1C1B33">#1C1B33</color>
     <color name="color_5936B4">#5936B4</color>
     <color name="color_362A84">#362A84</color>
+    <color name="color_362A84_70">#B3362A84</color>
     <color name="color_3658B1">#3658B1</color>
     <color name="color_C159EC">#C159EC</color>
     <color name="color_AEC9FF">#AEC9FF</color>
@@ -25,6 +26,7 @@
     <color name="color_1F1D47">#1F1D47</color>
     <color name="color_C427FB">#C427FB</color>
     <color name="color_E0D9FF">#E0D9FF</color>
+    <color name="color_40CBD8">#40CBD8</color>
     <!--  Semantic  -->
     <color name="success">#49BE20</color>
     <color name="warning">#F58E16</color>
