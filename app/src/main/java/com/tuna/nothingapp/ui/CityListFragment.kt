@@ -10,7 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.tuna.nothingapp.R
 import com.tuna.nothingapp.databinding.FragmentCityListBinding
 import com.tuna.nothingapp.viewmodel.MainSharedViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CityListFragment : Fragment() {
     private lateinit var binding: FragmentCityListBinding
     private lateinit var viewModel: MainSharedViewModel

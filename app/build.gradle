@@ -1,19 +1,26 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id("dagger.hilt.android.plugin")
+    id('kotlin-kapt')
+    id("androidx.navigation.safeargs")
 }
 
 android {
-    compileSdk 32
+    compileSdk Versions.compileSdkVersion
+    def Properties properties = new Properties()
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
     defaultConfig {
         applicationId "com.tuna.nothingapp"
-        minSdk 26
-        targetSdk 32
+        minSdk Versions.minSdkVersion
+        targetSdk Versions.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resValue "string", "appid", properties.getProperty("appid", "")
+
     }
 
     buildTypes {
@@ -33,17 +40,47 @@ android {
         viewBinding true
         dataBinding true
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.kotlin_module")
+    }
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    api Deps.corektx
+    api Deps.appcompat
+    api Deps.material
+    api Deps.constraintLayout
+    //Navigation
+    api Deps.navigationfragmentktx
+    api Deps.navigationuiktx
+    //Lifecycle
+    api Deps.lifecycleLiveDataKtx
+    api Deps.lifecycleViewModelKtx
+    //
+
+    api Deps.recyclerview
+    api Deps.roomKtx
+    api Deps.roomRuntime
+    api Deps.retrofit
+    api Deps.converterGson
+    api Deps.okhttpUrlconnection
+    api Deps.coroutinesAndroid
+    api Deps.coroutinesCore
+    api Deps.glide
+    api Deps.timber
+    api Deps.hilt
+    kapt Deps.hiltCompiler
+    api Deps.spinkit
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
-    //navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
 }

@@ -27,5 +27,6 @@
     <color name="warning">#F58E16</color>
     <color name="error">#FA3434</color>
     <color name="info">#5C9CE6</color>
+    <color name="loading_progress">#00BCB4</color>
 
 </resources>
