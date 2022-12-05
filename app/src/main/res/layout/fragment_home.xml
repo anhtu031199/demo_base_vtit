@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/home_background">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_10_hor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_65_hor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_home_background"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:alpha="0.4"
+            android:layout_marginTop="@dimen/dimen_34dp"
+            android:scaleType="fitCenter"
+            android:foregroundGravity="top"
+            android:src="@drawable/img_background_home"
+            android:tint="@color/primary_reverse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline_10_hor" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_dateTime"
+            style="@style/style_text_regular_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:singleLine="true"
+            android:text="3, Nov 2022"
+            android:textColor="@color/primary_reverse"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_location"
+            style="@style/style_text_bold_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:drawableStart="@drawable/ic_location"
+            android:drawableTint="@color/primary_reverse"
+            android:text="Hanoi, Vietnam"
+            android:textColor="@color/primary_reverse"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_dateTime" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:gravity="center"
+            android:id="@+id/linear_center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_65_hor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline_10_hor">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_current_weather"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:src="@drawable/ic_weather_day_rainy" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_current_weather"
+                style="@style/style_text_bold_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginTop="-20dp"
+                android:text="Thunder"
+                android:textColor="@color/primary_reverse" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-20dp"
+                android:layout_weight="3">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_current_temp"
+                    style="@style/style_text_bold_footnote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="13"
+                    android:textColor="@color/primary_reverse"
+                    android:textSize="70sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/style_text_regular_footnote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="&#xb0;"
+                    android:textColor="#FFEB3B"
+                    android:textSize="70sp"
+                    app:layout_constraintStart_toEndOf="@id/tv_current_temp"
+                    app:layout_constraintTop_toTopOf="@id/tv_current_temp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/primary_reverse"
+            android:alpha="0.6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline_65_hor" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
