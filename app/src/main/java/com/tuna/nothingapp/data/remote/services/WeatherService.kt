@@ -9,6 +9,7 @@ interface WeatherService {
     suspend fun getCurrentWeather(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
+        @Query("units") units: String,
         @Query("appid") appid: String
     ): WeatherResponse
 }

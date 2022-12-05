@@ -48,6 +48,7 @@ object Versions {
     const val annotationAPI = "1.3.2"
 
     const val glide = "4.14.2"
+    const val glideTransformation = "4.3.0"
     const val coil = "1.3.2"
 
     const val sspAndroid = "1.0.6"
@@ -132,6 +133,7 @@ object Deps {
     const val rxpermissions = "com.github.tbruyelle:rxpermissions:${Versions.rxpermissions}"
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val glideTransformation = "jp.wasabeef:glide-transformations:${Versions.glideTransformation}"
     const val coil = "io.coil-kt:coil:${Versions.coil}"
 
     const val sdpAndroid = "com.intuit.sdp:sdp-android:${Versions.sdpAndroid}"

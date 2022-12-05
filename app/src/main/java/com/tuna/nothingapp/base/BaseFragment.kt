@@ -15,11 +15,13 @@ import com.tuna.nothingapp.extensions.showToast
 import com.tuna.nothingapp.utils.ProgressLoadingDialog
 import com.tuna.nothingapp.viewmodel.MainSharedViewModel
 
-abstract class BaseFragment<DB: ViewDataBinding> : Fragment() {
+abstract class BaseFragment<VM: ViewModel, DB: ViewDataBinding> : Fragment() {
     protected lateinit var binding: DB
+    protected abstract val viewModel: VM
 
     @LayoutRes
     protected abstract fun getLayoutId(): Int
+    protected abstract fun getViewModelBindingVariable(): Int
     protected abstract fun initView()
     protected abstract fun initData()
 
@@ -31,6 +33,7 @@ abstract class BaseFragment<DB: ViewDataBinding> : Fragment() {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
+            setVariable(getViewModelBindingVariable(), viewModel)
         }
         initView()
         return binding.root
@@ -52,4 +55,6 @@ abstract class BaseFragment<DB: ViewDataBinding> : Fragment() {
     fun hideLoading() {
         ProgressLoadingDialog.hide(childFragmentManager)
     }
+
+
 }
