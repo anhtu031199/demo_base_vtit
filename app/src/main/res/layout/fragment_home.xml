@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="viewModel"
+            type="com.tuna.nothingapp.viewmodel.MainSharedViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/home_background">
+        android:background="@color/primary_reverse">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_10_hor"
@@ -25,121 +30,160 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.65" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_home_background"
-            android:layout_width="0dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="@dimen/dimen_34dp"
-            android:alpha="0.4"
-            android:foregroundGravity="top"
-            android:scaleType="fitCenter"
-            android:src="@drawable/img_background_home"
-            android:tint="@color/primary_reverse"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guideline_10_hor" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_dateTime"
-            style="@style/style_text_regular_body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_20dp"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:singleLine="true"
-            android:text="3, Nov 2022"
-            android:textColor="@color/primary_reverse"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_location"
-            style="@style/style_text_bold_body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_16dp"
-            android:drawableStart="@drawable/ic_location"
-            android:drawableTint="@color/primary_reverse"
-            android:text="Hanoi, Vietnam"
-            android:textColor="@color/primary_reverse"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_dateTime" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linear_center"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_65_hor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guideline_10_hor">
+        <RelativeLayout
+            android:id="@+id/toolbar_main"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_current_weather"
-                android:layout_width="200dp"
-                android:layout_height="0dp"
-                android:layout_weight="5"
-                android:src="@drawable/ic_weather_day_rainy" />
+                android:id="@+id/btn_menu"
+                android:layout_width="32dp"
+                android:layout_height="42dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:src="@drawable/ic_menu"
+                android:tint="@color/primary" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_current_weather"
-                style="@style/style_text_bold_body"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_dateTime"
+                style="@style/style_text_bold_title3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="-20dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Thunder"
-                android:textColor="@color/primary_reverse" />
+                android:layout_centerInParent="true"
+                android:text="@{viewModel.dateTime}"
+                tools:text="Mon, 1 Jan" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_units"
+                style="@style/style_text_bold_title3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_weight="3">
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dimen_12dp"
+                android:text="°C"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_current_temp"
-                    style="@style/style_text_bold_footnote"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:text="13"
-                    android:textColor="@color/primary_reverse"
-                    android:textSize="70sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/style_text_regular_footnote"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:text="&#xb0;"
-                    android:textColor="#FFEB3B"
-                    android:textSize="70sp"
-                    app:layout_constraintStart_toEndOf="@id/tv_current_temp"
-                    app:layout_constraintTop_toTopOf="@id/tv_current_temp" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:alpha="0.6"
-            android:background="@color/primary_reverse"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_background"
+            android:layout_width="500dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="@dimen/dimen_34dp"
+            android:alpha="0.15"
+            android:foregroundGravity="top"
+            android:scaleType="fitCenter"
+            android:tint="@color/primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline_10_hor"
+            tools:src="@drawable/img_background_home" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_65_hor"
+            app:layout_constraintTop_toTopOf="@id/guideline_10_hor">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/location"
+                style="@style/style_text_bold_title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="London" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_degree"
+                style="@style/style_text_bold_largetitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/location"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:includeFontPadding="false"
+                android:text="@{viewModel.currentTemp.toString()+`°`}"
+                android:textSize="120sp"
+                tools:text="10°" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_feels_like_text"
+                style="@style/style_text_bold_title3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_degree"
+                android:text="@string/feels_like" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_feels_like_value"
+                style="@style/style_text_bold_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tv_feels_like_text"
+                android:layout_toEndOf="@id/tv_feels_like_text"
+                android:text="@{viewModel.feelsLikeTemp.toString()+`°`}"
+                tools:text="10°" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/baseline"
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:layout_below="@id/tv_feels_like_text"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:background="@color/primary_50" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_temp_high"
+                style="@style/style_text_bold_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/tv_wind"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:drawableStart="@drawable/ic_high"
+                android:drawableTint="@color/primary_50"
+                android:text="22°" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_temp_low"
+                style="@style/style_text_bold_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_temp_high"
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:layout_toEndOf="@id/tv_temp_high"
+                android:drawableStart="@drawable/ic_low"
+                android:drawableTint="@color/primary_50"
+                android:text="22°" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_wind"
+                style="@style/style_text_bold_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:text="Wind 100km/h" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_current"
+                android:layout_width="500dp"
+                android:layout_height="300dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_20dp"
+                android:layout_marginEnd="-50dp"
+                android:layout_toEndOf="@id/tv_degree"
+                android:src="@drawable/ic_night_windy" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/primary_50"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="@id/guideline_65_hor" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

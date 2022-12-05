@@ -4,30 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
 
-    <color name="primary">#000000</color>
+    <color name="primary">#1869FF</color>
+    <color name="primary_50">#801869FF</color>
     <color name="primary_reverse">#FFFFFF</color>
-    <color name="secondary">#993C3C43</color>
-    <color name="tertiary">#4D3C3C43</color>
-    <color name="quaternary">#2E3C3C43</color>
-    <color name="home_background">#151515</color>
+    <color name="secondary">#1869FF</color>
 
-    <color name="color_2E335A">#2E335A</color>
-    <color name="color_1C1B33">#1C1B33</color>
-    <color name="color_5936B4">#5936B4</color>
-    <color name="color_362A84">#362A84</color>
-    <color name="color_362A84_70">#B3362A84</color>
-    <color name="color_3658B1">#3658B1</color>
-    <color name="color_C159EC">#C159EC</color>
-    <color name="color_AEC9FF">#AEC9FF</color>
-    <color name="color_083072">#083072</color>
-    <color name="color_F7CBFD">#F7CBFD</color>
-    <color name="color_7758D1">#7758D1</color>
-
-    <color name="color_48319D">#48319D</color>
-    <color name="color_1F1D47">#1F1D47</color>
-    <color name="color_C427FB">#C427FB</color>
-    <color name="color_E0D9FF">#E0D9FF</color>
-    <color name="color_40CBD8">#40CBD8</color>
     <!--  Semantic  -->
     <color name="success">#49BE20</color>
     <color name="warning">#F58E16</color>

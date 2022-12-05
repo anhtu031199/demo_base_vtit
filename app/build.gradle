@@ -75,6 +75,7 @@ dependencies {
     api Deps.coroutinesAndroid
     api Deps.coroutinesCore
     api Deps.glide
+    api Deps.glideTransformation
     api Deps.timber
     api Deps.hilt
     kapt Deps.hiltCompiler
