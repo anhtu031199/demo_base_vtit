@@ -29,10 +29,10 @@
             android:id="@+id/img_home_background"
             android:layout_width="0dp"
             android:layout_height="300dp"
-            android:alpha="0.4"
             android:layout_marginTop="@dimen/dimen_34dp"
-            android:scaleType="fitCenter"
+            android:alpha="0.4"
             android:foregroundGravity="top"
+            android:scaleType="fitCenter"
             android:src="@drawable/img_background_home"
             android:tint="@color/primary_reverse"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,10 +66,10 @@
             app:layout_constraintTop_toBottomOf="@id/tv_dateTime" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:gravity="center"
             android:id="@+id/linear_center"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@id/guideline_65_hor"
             app:layout_constraintEnd_toEndOf="parent"
@@ -89,9 +89,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="-20dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_marginTop="-20dp"
                 android:text="Thunder"
                 android:textColor="@color/primary_reverse" />
 
@@ -135,8 +135,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/primary_reverse"
             android:alpha="0.6"
+            android:background="@color/primary_reverse"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
