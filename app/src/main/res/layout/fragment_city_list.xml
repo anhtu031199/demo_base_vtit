@@ -8,10 +8,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@drawable/bg_home"
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/style_text_bold_title1"
+            style="@style/style_text_bold_48sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="City List Screen"

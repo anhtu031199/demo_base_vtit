@@ -4,9 +4,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
 
-    <color name="primary">#FFFFFF</color>
-    <color name="primary_reverse">#1869FF</color>
-    <color name="secondary">#1869FF</color>
+    <color name="primary">#111827</color>
+    <color name="primary_50">#80111827</color>
+    <color name="primary_reverse">#FFFFFF</color>
+    <color name="secondary">#282B32</color>
 
     <!--  Semantic  -->
     <color name="success">#49BE20</color>

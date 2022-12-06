@@ -10,6 +10,10 @@
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
+            app:enterAnim="@anim/slide_in_up"
+            app:popEnterAnim="@anim/hold"
+            app:exitAnim="@anim/hold"
+            app:popExitAnim="@anim/slide_in_down"
             android:id="@+id/action_splash_fragment_to_home_fragment"
             app:destination="@id/home_fragment" />
     </fragment>
@@ -19,12 +23,53 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_main_fragment_to_city_list_fragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:popEnterAnim="@anim/hold"
+            app:exitAnim="@anim/hold"
+            app:popExitAnim="@anim/slide_in_down"
+            android:id="@+id/action_home_fragment_to_city_list_fragment"
             app:destination="@id/city_list_fragment" />
+        <action
+            app:enterAnim="@anim/slide_in_up"
+            app:popEnterAnim="@anim/hold"
+            app:exitAnim="@anim/hold"
+            app:popExitAnim="@anim/slide_in_down"
+            android:id="@+id/action_home_fragment_to_setting_fragment"
+            app:destination="@id/setting_fragment" />
+        <action
+            app:enterAnim="@anim/slide_in_up"
+            app:popEnterAnim="@anim/hold"
+            app:exitAnim="@anim/hold"
+            app:popExitAnim="@anim/slide_in_down"
+            android:id="@+id/action_home_fragment_to_forecast_fragment"
+            app:destination="@id/forecast_fragment" />
+        <action
+            app:enterAnim="@anim/slide_in_up"
+            app:popEnterAnim="@anim/hold"
+            app:exitAnim="@anim/hold"
+            app:popExitAnim="@anim/slide_in_down"
+            android:id="@+id/action_home_fragment_to_aqi_fragent"
+            app:destination="@id/aqi_fragent" />
     </fragment>
     <fragment
         android:id="@+id/city_list_fragment"
-        android:name="com.tuna.nothingapp.ui.CityListFragment"
+        android:name="com.tuna.nothingapp.ui.cityList.CityListFragment"
         android:label="CityListFragment"
         tools:layout="@layout/fragment_city_list" />
+    <fragment
+        android:id="@+id/setting_fragment"
+        android:name="com.tuna.nothingapp.ui.setting.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/forecast_fragment"
+        android:name="com.tuna.nothingapp.ui.forecast.ForecastFragment"
+        android:label="ForecastFragment"
+        tools:layout="@layout/fragment_forecast" />
+    <fragment
+        android:id="@+id/aqi_fragent"
+        android:name="com.tuna.nothingapp.ui.aqi.AQIFragment"
+        android:label="AQIFragment"
+        tools:layout="@layout/fragment_aqi" />
+
 </navigation>

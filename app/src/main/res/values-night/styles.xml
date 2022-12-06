@@ -1,137 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="style_text_regular_caption2" parent="Widget.AppCompat.TextView">
+    <style name="style_text_regular_11sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_regular</item>
         <item name="android:textColor">@color/primary</item>
         <item name="android:textSize">@dimen/dimen_11sp</item>
         <item name="lineHeight">@dimen/dimen_13dp</item>
     </style>
-    <style name="style_text_regular_caption1" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_12sp</item>
-        <item name="lineHeight">@dimen/dimen_16dp</item>
-    </style>
-    <style name="style_text_regular_footnote" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_13sp</item>
-        <item name="lineHeight">@dimen/dimen_18dp</item>
-    </style>
-    <style name="style_text_regular_subheadline" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_15sp</item>
-        <item name="lineHeight">@dimen/dimen_20dp</item>
-    </style>
-    <style name="style_text_regular_callout" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_16sp</item>
-        <item name="lineHeight">@dimen/dimen_21dp</item>
-    </style>
-    <style name="style_text_regular_body" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_17sp</item>
-        <item name="lineHeight">@dimen/dimen_22dp</item>
-    </style>
-    <style name="style_text_regular_headline" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_semibold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_17sp</item>
-        <item name="lineHeight">@dimen/dimen_22dp</item>
-    </style>
-    <style name="style_text_regular_title3" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_20sp</item>
-        <item name="lineHeight">@dimen/dimen_24dp</item>
-    </style>
-    <style name="style_text_regular_title2" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_22sp</item>
-        <item name="lineHeight">@dimen/dimen_28dp</item>
-    </style>
-    <style name="style_text_regular_title1" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_28sp</item>
-        <item name="lineHeight">@dimen/dimen_34dp</item>
-    </style>
-    <style name="style_text_regular_largetitle" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_34sp</item>
-        <item name="lineHeight">@dimen/dimen_41dp</item>
-    </style>
-
-    <style name="style_text_bold_caption2" parent="Widget.AppCompat.TextView">
+    <style name="style_text_bold_11sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_bold</item>
         <item name="android:textColor">@color/primary</item>
         <item name="android:textSize">@dimen/dimen_11sp</item>
         <item name="lineHeight">@dimen/dimen_13dp</item>
-    </style>
-    <style name="style_text_bold_caption1" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_12sp</item>
-        <item name="lineHeight">@dimen/dimen_16dp</item>
-    </style>
-    <style name="style_text_bold_footnote" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_13sp</item>
-        <item name="lineHeight">@dimen/dimen_18dp</item>
-    </style>
-    <style name="style_text_bold_subheadline" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_15sp</item>
-        <item name="lineHeight">@dimen/dimen_20dp</item>
-    </style>
-    <style name="style_text_bold_callout" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_16sp</item>
-        <item name="lineHeight">@dimen/dimen_21dp</item>
-    </style>
-    <style name="style_text_bold_body" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_17sp</item>
-        <item name="lineHeight">@dimen/dimen_22dp</item>
-    </style>
-    <style name="style_text_bold_headline" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_17sp</item>
-        <item name="lineHeight">@dimen/dimen_22dp</item>
-    </style>
-    <style name="style_text_bold_title3" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_20sp</item>
-        <item name="lineHeight">@dimen/dimen_24dp</item>
-    </style>
-    <style name="style_text_bold_title2" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_22sp</item>
-        <item name="lineHeight">@dimen/dimen_28dp</item>
-    </style>
-    <style name="style_text_bold_title1" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_28sp</item>
-        <item name="lineHeight">@dimen/dimen_34dp</item>
-    </style>
-    <style name="style_text_bold_largetitle" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/dimen_34sp</item>
-        <item name="lineHeight">@dimen/dimen_41dp</item>
     </style>
 
 </resources>

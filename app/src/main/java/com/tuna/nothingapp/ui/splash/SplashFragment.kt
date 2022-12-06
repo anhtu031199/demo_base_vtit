@@ -37,7 +37,7 @@ class SplashFragment : BaseFragment<MainSharedViewModel, FragmentSplashBinding>(
     private fun navigateToHome(view: View) {
         val action = SplashFragmentDirections.actionSplashFragmentToHomeFragment()
         lifecycleScope.launch {
-            delay(2500L)
+            delay(1500L)
             if (viewModel.demo.value.isNullOrEmpty()) navigateToHome(view)
             else view.findNavController().navigate(action)
         }

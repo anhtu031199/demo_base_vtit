@@ -16,10 +16,7 @@ class MainActivity : BaseActivity<MainSharedViewModel, ActivityMainBinding>() {
 
     override fun getViewModelBindingVariable(): Int = BR._all
 
-    override fun initView() {
-    }
+    override fun initView() {}
 
-    override fun initData() {
-    }
-
+    override fun initData() {}
 }

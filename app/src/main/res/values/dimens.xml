@@ -25,4 +25,10 @@
     <dimen name="card_elevation">6dp</dimen>
     <dimen name="progress_bar_size">35dp</dimen>
     <dimen name="dimen_12dp">12dp</dimen>
+    <dimen name="dimen_48sp">48sp</dimen>
+    <dimen name="dimen_52dp">52dp</dimen>
+    <dimen name="dimen_18sp">18sp</dimen>
+    <dimen name="dimen_80sp">80sp</dimen>
+    <dimen name="dimen_84dp">84dp</dimen>
+    <dimen name="bottom_navbar_bottom_size">24dp</dimen>
 </resources>

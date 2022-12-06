@@ -30,12 +30,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/progress_bar_size"
                     android:layout_gravity="center"
-                    app:SpinKit_Color="@color/loading_progress" />
+                    app:SpinKit_Color="@color/primary_reverse" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/style_text_regular_subheadline"
+                    style="@style/style_text_regular_11sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/primary_reverse"
                     android:layout_marginTop="5dp"
                     android:text="Loading..." />
 
