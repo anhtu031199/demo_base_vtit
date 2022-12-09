@@ -7,7 +7,8 @@
     <color name="primary">#FFFFFF</color>
     <color name="primary_50">#80FFFFFF</color>
     <color name="primary_reverse">#111827</color>
-    <color name="secondary">#B4C0D3</color>
+    <color name="primary_reverse_50">#80111827</color>
+    <color name="secondary">#A2B8DC</color>
 
     <!--  Semantic  -->
     <color name="success">#49BE20</color>

@@ -26,30 +26,35 @@ class MainSharedViewModel @Inject constructor(
     @ApplicationContext context: Context
 ) : BaseViewModel() {
     private var _demo = MutableLiveData<String>()
-    val demo: LiveData<String> = _demo
+    private var _current = MutableLiveData<Current>()
+    private var _currentTemp = MutableLiveData<Int>()
+    private var _feelsLikeTemp = MutableLiveData<Int>()
+    private var _dateTime = MutableLiveData<String>()
 
-    var current = MutableLiveData<Current>()
-    var currentTemp = MutableLiveData<Int>()
-    var feelsLikeTemp = MutableLiveData<Int>()
-    var dateTime = MutableLiveData<String>()
-    fun getWeather() {
+    val demo: LiveData<String> = _demo
+    val current: LiveData<Current> = _current
+    val currentTemp: LiveData<Int> = _currentTemp
+    val feelsLikeTemp: LiveData<Int> = _feelsLikeTemp
+    val dateTime: LiveData<String> = _dateTime
+
+    fun initData() {
         viewModelScope.launch {
             try {
                 val weather = weatherRepository.getCurrentWeather(WeatherRequestBody(0.0, 0.0))
                 _demo.value = weather.toString()
-                current.value = weather.current
-                currentTemp.value = weather.current.temp.toInt()
-                feelsLikeTemp.value = weather.current.feels_like.toInt()
+                _current.value = weather.current
+                _currentTemp.value = weather.current.temp.toInt()
+                _feelsLikeTemp.value = weather.current.feels_like.toInt()
                 Timber.d("Weather: ${weather.current}")
             } catch (e: Exception) {
                 Timber.e("tuna: $e")
                 if (e is ConnectException) {
                     delay(2000L)
-                    getWeather()
+                    initData()
                 }
             }
         }
-        dateTime.value = SimpleDateFormat("EEE, d MMM", Locale.ENGLISH).format(Date())
+        _dateTime.value = SimpleDateFormat("EEE, d MMM, ", Locale.ENGLISH).format(Date())
     }
 
     fun navigateHomeToCityList() {
@@ -59,6 +64,7 @@ class MainSharedViewModel @Inject constructor(
             )
         )
     }
+
     fun navigateHomeToForecast() {
         navigate(
             NavigationCommand.To(
@@ -66,13 +72,7 @@ class MainSharedViewModel @Inject constructor(
             )
         )
     }
-    fun navigateHomeToAQI() {
-        navigate(
-            NavigationCommand.To(
-                HomeFragmentDirections.actionHomeFragmentToAqiFragent()
-            )
-        )
-    }
+
     fun navigateHomeToSetting() {
         navigate(
             NavigationCommand.To(

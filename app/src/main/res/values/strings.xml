@@ -2,4 +2,8 @@
     <string name="app_name">Nothing App</string>
     <string name="degree">°</string>
     <string name="feels_like">Feels like&#160;</string>
+    <string name="now">Now</string>
+    <string name="hourly">Hourly</string>
+    <string name="daily">Daily</string>
+    <string name="aqi">AQI</string>
 </resources>

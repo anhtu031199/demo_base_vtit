@@ -13,8 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_home"
-        android:paddingHorizontal="@dimen/dimen_20dp">
+        android:background="@drawable/bg_home">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_12_hor"
@@ -24,30 +23,52 @@
             app:layout_constraintGuide_percent="0.12" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_50_hor"
+            android:id="@+id/guideline_60_hor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.55" />
+            app:layout_constraintGuide_percent="0.65" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_location"
-            style="@style/style_text_bold_48sp"
-            android:layout_width="wrap_content"
+            style="@style/style_text_regular_18sp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:alpha="0.9"
+            android:gravity="start"
             android:includeFontPadding="false"
             android:singleLine="true"
-            android:text="Dan Phuong"
+            android:text="Dan Phuong, Ha Noi"
             android:textColor="@color/primary_reverse"
             app:layout_constraintBottom_toBottomOf="@id/guideline_12_hor"
+            app:layout_constraintEnd_toStartOf="@id/tv_current_degree"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_current_degree"
+            style="@style/style_text_bold_80sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            android:alpha="0.9"
+            android:includeFontPadding="false"
+            android:text="@{viewModel.currentTemp.toString()+`°`}"
+            android:textColor="@color/success"
+            android:textSize="64sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_current_weather"
+            tools:text="19°" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_date_time"
             style="@style/style_text_regular_18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_20dp"
             android:layout_marginBottom="2dp"
+            android:includeFontPadding="false"
             android:singleLine="true"
             android:text="@{viewModel.dateTime}"
             android:textColor="@color/primary_reverse"
@@ -55,12 +76,35 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Mon, 1 Jan" />
 
+        <TextClock
+            android:id="@+id/tv_hour"
+            style="@style/style_text_regular_18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format24Hour="HH:mm"
+            android:format12Hour="HH:mm"
+            app:layout_constraintBottom_toBottomOf="@id/tv_date_time"
+            app:layout_constraintStart_toEndOf="@id/tv_date_time" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_current_weather"
+            style="@style/style_text_bold_32sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:includeFontPadding="false"
+            android:text="@{viewModel.current.weather.get(0).main}"
+            app:layout_constraintBottom_toTopOf="@id/tv_date_time"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Clear" />
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_weather_current_blur"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/dimen_20dp"
             android:alpha="0.1"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_50_hor"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_60_hor"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,84 +114,49 @@
             android:id="@+id/img_weather_current"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/dimen_20dp"
             android:padding="@dimen/dimen_12dp"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_50_hor"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_60_hor"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/guideline_12_hor"
-            tools:src="@drawable/ic_weather_night_cloud" />
+            tools:src="@drawable/ic_weather_day_cloud" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_current_degree"
-            style="@style/style_text_bold_80sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="false"
-            android:text="@{viewModel.currentTemp.toString()+`°`}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_weather_current"
-            tools:text="19°" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_current_weather"
-            style="@style/style_text_bold_24sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="false"
-            android:text="@{viewModel.current.weather.get(0).main}"
-            android:textColor="@color/info"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_current_degree"
-            tools:text="Clear" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/navbar_bottom"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linear_weather_info"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_bottom_bar"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline_60_hor">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btn_navbar_bottom_1"
-                android:layout_width="@dimen/bottom_navbar_bottom_size"
-                android:layout_height="@dimen/bottom_navbar_bottom_size"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:alpha="0.9"
-                android:src="@drawable/ic_forecast"
-                android:tint="@color/primary_reverse" />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager_home"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_viewpager"
+                app:layout_constraintBottom_toTopOf="@id/bottom_navbar_home"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btn_navbar_bottom_2"
-                android:layout_width="@dimen/bottom_navbar_bottom_size"
-                android:layout_height="@dimen/bottom_navbar_bottom_size"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:alpha="0.9"
-                android:src="@drawable/ic_location"
-                android:tint="@color/primary_reverse" />
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navbar_home"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_bottom_bar"
+                android:orientation="horizontal"
+                app:elevation="0dp"
+                app:itemBackground="@drawable/bg_bottom_navbar_item"
+                app:itemTextAppearanceActive="@style/style_text_semibold_18sp"
+                app:itemTextAppearanceInactive="@style/style_text_regular_18sp"
+                app:itemTextColor="@color/menu_title_color"
+                app:labelVisibilityMode="labeled"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/menu_bottom_nav" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btn_navbar_bottom_3"
-                android:layout_width="@dimen/bottom_navbar_bottom_size"
-                android:layout_height="@dimen/bottom_navbar_bottom_size"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:alpha="0.9"
-                android:src="@drawable/ic_mask"
-                android:tint="@color/primary_reverse" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btn_navbar_bottom_4"
-                android:layout_width="@dimen/bottom_navbar_bottom_size"
-                android:layout_height="@dimen/bottom_navbar_bottom_size"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:alpha="0.9"
-                android:src="@drawable/ic_setting"
-                android:tint="@color/primary_reverse" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

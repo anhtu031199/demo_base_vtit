@@ -12,11 +12,29 @@
         <item name="android:textSize">@dimen/dimen_18sp</item>
         <item name="lineHeight">@dimen/dimen_20dp</item>
     </style>
+    <style name="style_text_semibold_18sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_semibold</item>
+        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textSize">@dimen/dimen_18sp</item>
+        <item name="lineHeight">@dimen/dimen_20dp</item>
+    </style>
+    <style name="style_text_regular_20sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_regular</item>
+        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textSize">@dimen/dimen_20sp</item>
+        <item name="lineHeight">@dimen/dimen_20dp</item>
+    </style>
     <style name="style_text_regular_24sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_regular</item>
         <item name="android:textColor">@color/primary_reverse</item>
         <item name="android:textSize">@dimen/dimen_24sp</item>
         <item name="lineHeight">@dimen/dimen_28dp</item>
+    </style>
+    <style name="style_text_regular_32sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_regular</item>
+        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textSize">@dimen/dimen_32sp</item>
+        <item name="lineHeight">@dimen/dimen_38dp</item>
     </style>
     <style name="style_text_bold_11sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_bold</item>
@@ -29,6 +47,18 @@
         <item name="android:textColor">@color/primary_reverse</item>
         <item name="android:textSize">@dimen/dimen_24sp</item>
         <item name="lineHeight">@dimen/dimen_28dp</item>
+    </style>
+    <style name="style_text_bold_32sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_bold</item>
+        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textSize">@dimen/dimen_32sp</item>
+        <item name="lineHeight">@dimen/dimen_38dp</item>
+    </style>
+    <style name="style_text_semibold_32sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_semibold</item>
+        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textSize">@dimen/dimen_32sp</item>
+        <item name="lineHeight">@dimen/dimen_38dp</item>
     </style>
     <style name="style_text_bold_48sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_bold</item>
@@ -46,4 +76,6 @@
     <dimen name="dimen_144sp">144sp</dimen>
     <dimen name="dimen_24sp">24sp</dimen>
     <dimen name="dimen_120sp">120sp</dimen>
+    <dimen name="dimen_32sp">32sp</dimen>
+    <dimen name="dimen_38dp">38dp</dimen>
 </resources>

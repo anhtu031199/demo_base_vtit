@@ -31,4 +31,5 @@
     <dimen name="dimen_80sp">80sp</dimen>
     <dimen name="dimen_84dp">84dp</dimen>
     <dimen name="bottom_navbar_bottom_size">24dp</dimen>
+    <dimen name="dimen_40dp">40dp</dimen>
 </resources>

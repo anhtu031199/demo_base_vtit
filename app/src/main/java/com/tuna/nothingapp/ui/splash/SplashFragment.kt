@@ -26,7 +26,7 @@ class SplashFragment : BaseFragment<MainSharedViewModel, FragmentSplashBinding>(
     override fun initView() {}
 
     override fun initData() {
-        viewModel.getWeather()
+        viewModel.initData()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

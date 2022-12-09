@@ -72,6 +72,7 @@ object Versions {
     const val espressoCore = "1.1.3"
     const val robolectric = "4.7.3"
     const val spinkit = "1.4.0"
+    const val viewPager = "1.0.0"
 }
 
 object Deps {
@@ -167,6 +168,7 @@ object Deps {
     const val spinkit = "com.github.ybq:Android-SpinKit:${Versions.spinkit}"
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+    const val viewPager = "androidx.viewpager2:viewpager2:${Versions.viewPager}"
 }
 
 object TestDeps {

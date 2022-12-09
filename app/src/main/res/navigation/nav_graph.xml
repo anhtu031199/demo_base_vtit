@@ -43,13 +43,6 @@
             app:popExitAnim="@anim/slide_in_down"
             android:id="@+id/action_home_fragment_to_forecast_fragment"
             app:destination="@id/forecast_fragment" />
-        <action
-            app:enterAnim="@anim/slide_in_up"
-            app:popEnterAnim="@anim/hold"
-            app:exitAnim="@anim/hold"
-            app:popExitAnim="@anim/slide_in_down"
-            android:id="@+id/action_home_fragment_to_aqi_fragent"
-            app:destination="@id/aqi_fragent" />
     </fragment>
     <fragment
         android:id="@+id/city_list_fragment"
@@ -66,10 +59,5 @@
         android:name="com.tuna.nothingapp.ui.forecast.ForecastFragment"
         android:label="ForecastFragment"
         tools:layout="@layout/fragment_forecast" />
-    <fragment
-        android:id="@+id/aqi_fragent"
-        android:name="com.tuna.nothingapp.ui.aqi.AQIFragment"
-        android:label="AQIFragment"
-        tools:layout="@layout/fragment_aqi" />
 
 </navigation>

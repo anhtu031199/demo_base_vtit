@@ -2,14 +2,14 @@ package com.tuna.nothingapp.ui.home
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.tuna.nothingapp.BR
 import com.tuna.nothingapp.R
 import com.tuna.nothingapp.base.BaseFragment
 import com.tuna.nothingapp.databinding.FragmentHomeBinding
+import com.tuna.nothingapp.ui.viewPager.adapter.HomeViewpager2Adapter
 import com.tuna.nothingapp.viewmodel.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,15 +22,16 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
     override fun getViewModelBindingVariable(): Int = BR.viewModel
 
     override fun initView() {
+        setupViewPager()
         Glide.with(this)
             .asBitmap()
-            .load(R.drawable.ic_weather_night_cloud)
+            .load(R.drawable.ic_weather_day_cloud)
             .override(10, 10)
             .fitCenter()
             .into(binding.imgWeatherCurrentBlur)
         Glide.with(this)
             .asBitmap()
-            .load(R.drawable.ic_weather_night_cloud)
+            .load(R.drawable.ic_weather_day_cloud)
             .placeholder(R.drawable.img_home_background)
             .fitCenter()
             .into(binding.imgWeatherCurrent)
@@ -40,20 +41,55 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.btnNavbarBottom1.setOnClickListener {
-            viewModel.navigateHomeToForecast()
+    private fun setupViewPager(){
+        val adapter = HomeViewpager2Adapter(parentFragmentManager, lifecycle)
+        binding.viewPagerHome.adapter = adapter
+        binding.bottomNavbarHome.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_now -> {
+                    binding.viewPagerHome.currentItem = 0
+                    true
+                }
+                R.id.menu_hourly -> {
+                    binding.viewPagerHome.currentItem = 1
+                    true
+                }
+                R.id.menu_daily -> {
+                    binding.viewPagerHome.currentItem = 2
+                    true
+                }
+                R.id.menu_aqi -> {
+                    binding.viewPagerHome.currentItem = 3
+                    true
+                }
+                else -> {
+                    binding.viewPagerHome.currentItem = 0
+                    true
+                }
+            }
         }
-        binding.btnNavbarBottom2.setOnClickListener {
-            viewModel.navigateHomeToCityList()
-        }
-        binding.btnNavbarBottom3.setOnClickListener {
-            viewModel.navigateHomeToAQI()
-        }
-        binding.btnNavbarBottom4.setOnClickListener {
-            viewModel.navigateHomeToSetting()
-        }
-    }
+        binding.viewPagerHome.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                when (position) {
+                    0 -> {
+                        binding.bottomNavbarHome.menu.findItem(R.id.menu_now).isChecked = true
+                    }
+                    1 -> {
+                        binding.bottomNavbarHome.menu.findItem(R.id.menu_hourly).isChecked = true
+                    }
+                    2 -> {
+                        binding.bottomNavbarHome.menu.findItem(R.id.menu_daily).isChecked = true
+                    }
+                    3 -> {
+                        binding.bottomNavbarHome.menu.findItem(R.id.menu_aqi).isChecked = true
+                    }
+                    else -> {
 
+                    }
+                }
+                super.onPageSelected(position)
+            }
+        })
+    }
 }
