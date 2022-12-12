@@ -4,6 +4,5 @@ import com.tuna.nothingapp.data.remote.request.WeatherRequestBody
 import com.tuna.nothingapp.data.remote.response.WeatherResponse
 
 interface WeatherRepository {
-
     suspend fun getCurrentWeather(weatherRequestBody: WeatherRequestBody): WeatherResponse
 }

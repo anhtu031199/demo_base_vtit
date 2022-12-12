@@ -4,6 +4,7 @@ object BuildPlugins {
     val hilt by lazy { "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}" }
     val ktLint by lazy { "org.jlleitschuh.gradle:ktlint-gradle:${Versions.ktlintGradlePlugin}" }
     val navigationSafe by lazy { "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}" }
+    val googleServices by lazy { "com.google.gms:google-services:${Versions.googleServices}" }
 }
 
 object Versions {
@@ -16,7 +17,7 @@ object Versions {
     const val kotlinGradlePlugin = "1.6.10"
     const val ktlintGradlePlugin = "10.2.1"
     const val butterknifeGradlePlugin = "10.2.3"
-    const val googleServices = "4.3.10"
+    const val googleServices = "4.3.13"
     const val firebaseCrashlyticsGradle = "2.8.1"
 
     const val corektx = "1.7.0"
@@ -73,6 +74,7 @@ object Versions {
     const val robolectric = "4.7.3"
     const val spinkit = "1.4.0"
     const val viewPager = "1.0.0"
+    const val locationServices = "21.0.1"
 }
 
 object Deps {
@@ -169,6 +171,7 @@ object Deps {
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
     const val viewPager = "androidx.viewpager2:viewpager2:${Versions.viewPager}"
+    const val locationServices = "com.google.android.gms:play-services-location:${Versions.locationServices}"
 }
 
 object TestDeps {

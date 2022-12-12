@@ -1,6 +1,7 @@
 package com.tuna.nothingapp.data.remote.request
 
 import com.google.gson.annotations.SerializedName
+import com.tuna.nothingapp.BuildConfig
 import com.tuna.nothingapp.utils.Constants
 
 data class WeatherRequestBody(
@@ -8,5 +9,5 @@ data class WeatherRequestBody(
     var lon: Double = 0.0,
     var units: String = "metric",
     @SerializedName("appid")
-    var appID: String = Constants.APPID
+    var appID: String = BuildConfig.WEATHER_KEY
 )

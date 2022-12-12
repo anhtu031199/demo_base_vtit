@@ -2,6 +2,8 @@ package com.tuna.nothingapp.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.tuna.nothingapp.BuildConfig
+import com.tuna.nothingapp.data.remote.services.LocationService
 import com.tuna.nothingapp.data.remote.services.WeatherService
 import com.tuna.nothingapp.data.repository.WeatherRepository
 import com.tuna.nothingapp.data.repository.impl.WeatherRepositoryImpl
@@ -18,8 +20,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
-
-const val SERVICE_WEATHER = "SERVICE_WEATHER"
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -49,8 +49,20 @@ class NetworkModule {
     ): WeatherService = Retrofit.Builder()
         .addConverterFactory(gsonConverterFactory)
         .client(okHttpClient)
-        .baseUrl(Constants.BASE_WEATHER_URL)
+        .baseUrl(BuildConfig.BASE_WEATHER_URL)
         .build()
         .create(WeatherService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideLocationService(
+        okHttpClient: OkHttpClient,
+        gsonConverterFactory: GsonConverterFactory
+    ): LocationService = Retrofit.Builder()
+        .addConverterFactory(gsonConverterFactory)
+        .client(okHttpClient)
+        .baseUrl(BuildConfig.BASE_LOCATION_URL)
+        .build()
+        .create(LocationService::class.java)
 
 }

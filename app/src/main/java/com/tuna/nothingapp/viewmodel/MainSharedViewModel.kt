@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.tuna.nothingapp.base.BaseViewModel
 import com.tuna.nothingapp.data.remote.request.WeatherRequestBody
 import com.tuna.nothingapp.data.remote.response.Current
+import com.tuna.nothingapp.data.repository.LocationRepository
 import com.tuna.nothingapp.data.repository.WeatherRepository
 import com.tuna.nothingapp.navigation.NavigationCommand
 import com.tuna.nothingapp.ui.home.HomeFragmentDirections
@@ -23,6 +24,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainSharedViewModel @Inject constructor(
     private val weatherRepository: WeatherRepository,
+    private val locationRepository: LocationRepository,
     @ApplicationContext context: Context
 ) : BaseViewModel() {
     private var _demo = MutableLiveData<String>()
@@ -30,12 +32,16 @@ class MainSharedViewModel @Inject constructor(
     private var _currentTemp = MutableLiveData<Int>()
     private var _feelsLikeTemp = MutableLiveData<Int>()
     private var _dateTime = MutableLiveData<String>()
+    private var _longitude = MutableLiveData<Double>()
+    private var _latitude = MutableLiveData<Double>()
 
     val demo: LiveData<String> = _demo
     val current: LiveData<Current> = _current
     val currentTemp: LiveData<Int> = _currentTemp
     val feelsLikeTemp: LiveData<Int> = _feelsLikeTemp
     val dateTime: LiveData<String> = _dateTime
+    val lontitude: LiveData<Double> = _longitude
+    val latitude: LiveData<Double> = _latitude
 
     fun initData() {
         viewModelScope.launch {
@@ -79,5 +85,9 @@ class MainSharedViewModel @Inject constructor(
                 HomeFragmentDirections.actionHomeFragmentToSettingFragment()
             )
         )
+    }
+
+    fun getCurrentLocation(){
+
     }
 }

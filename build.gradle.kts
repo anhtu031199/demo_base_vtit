@@ -11,6 +11,7 @@ buildscript {
         classpath(BuildPlugins.hilt)
         classpath(BuildPlugins.ktLint)
         classpath(BuildPlugins.navigationSafe)
+        classpath(BuildPlugins.googleServices)
     }
 }
 

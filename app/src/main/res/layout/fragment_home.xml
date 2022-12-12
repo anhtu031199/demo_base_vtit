@@ -39,10 +39,10 @@
             android:gravity="start"
             android:includeFontPadding="false"
             android:singleLine="true"
-            android:text="Dan Phuong, Ha Noi"
+            android:text="Dan Phuong, Ha NoiDan Phuong, Ha NoiDan Phuong, Ha Noi"
+            android:maxLength="25"
             android:textColor="@color/primary_reverse"
             app:layout_constraintBottom_toBottomOf="@id/guideline_12_hor"
-            app:layout_constraintEnd_toStartOf="@id/tv_current_degree"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView

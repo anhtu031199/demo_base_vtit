@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "662694140204",
+    "project_id": "theweather-4707e",
+    "storage_bucket": "theweather-4707e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662694140204:android:b03aa41b0a63edc4e3b489",
+        "android_client_info": {
+          "package_name": "com.tuna.nothingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662694140204-8grpavq419150l4ottmda2vaof132240.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tuna.nothingapp",
+            "certificate_hash": "664544003e7a8b843f8b08731089225680b49999"
+          }
+        },
+        {
+          "client_id": "662694140204-o0jonsu4koqplefhm73kf4g4akhmva26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnYNSL39F8y7g1QEGJVfjYxnWFMFOz6Mk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662694140204-o0jonsu4koqplefhm73kf4g4akhmva26.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

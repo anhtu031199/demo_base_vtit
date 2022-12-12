@@ -1,15 +1,16 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id("dagger.hilt.android.plugin")
-    id('kotlin-kapt')
-    id("androidx.navigation.safeargs")
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
+    id 'com.google.gms.google-services'
 }
 
 android {
     compileSdk Versions.compileSdkVersion
-    def Properties properties = new Properties()
-    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
     defaultConfig {
         applicationId "com.tuna.nothingapp"
@@ -19,11 +20,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        resValue "string", "appid", properties.getProperty("appid", "")
-
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "MAP_KEY", "\"" + localProperties['hereMapsKey'] + "\"")
+            buildConfigField("String", "WEATHER_KEY", "\"" + localProperties['openWeatherKey'] + "\"")
+            buildConfigField("String", "BASE_WEATHER_URL", "\"" + localProperties['baseWeatherURL'] + "\"")
+            buildConfigField("String", "BASE_LOCATION_URL", "\"" + localProperties['baseLocationURL'] + "\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -81,6 +86,11 @@ dependencies {
     kapt Deps.hiltCompiler
     api Deps.spinkit
     api Deps.viewPager
+    api Deps.locationServices
+    api Deps.googleServices
+
+    implementation platform('com.google.firebase:firebase-bom:31.1.1')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
