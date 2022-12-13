@@ -1,11 +1,13 @@
 package com.tuna.nothingapp.base
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import com.tuna.nothingapp.navigation.NavigationCommand
 import com.tuna.nothingapp.navigation.Navigator
 import com.tuna.nothingapp.utils.SingleLiveEvent
 
-abstract class BaseViewModel : ViewModel() {
+open class BaseViewModel(val app: Application) : AndroidViewModel(app) {
     val navigateEvent by lazy { SingleLiveEvent<NavigationCommand>() }
 
     private lateinit var _navigator: Navigator

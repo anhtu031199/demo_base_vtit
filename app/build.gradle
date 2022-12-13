@@ -27,7 +27,8 @@ android {
             buildConfigField("String", "MAP_KEY", "\"" + localProperties['hereMapsKey'] + "\"")
             buildConfigField("String", "WEATHER_KEY", "\"" + localProperties['openWeatherKey'] + "\"")
             buildConfigField("String", "BASE_WEATHER_URL", "\"" + localProperties['baseWeatherURL'] + "\"")
-            buildConfigField("String", "BASE_LOCATION_URL", "\"" + localProperties['baseLocationURL'] + "\"")
+            buildConfigField("String", "BASE_SEARCH_LOCATION_URL", "\"" + localProperties['baseSearchLocationURL'] + "\"")
+            buildConfigField("String", "BASE_CURRENT_LOCATION_URL", "\"" + localProperties['baseCurrentLocationURL'] + "\"")
         }
         release {
             minifyEnabled false
@@ -88,6 +89,8 @@ dependencies {
     api Deps.viewPager
     api Deps.locationServices
     api Deps.googleServices
+    api Deps.rxpermissions
+    api Deps.rxAndroid3
 
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'

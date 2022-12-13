@@ -1,8 +1,6 @@
 package com.tuna.nothingapp.base
 
 import android.os.Bundle
-import android.view.Window
-import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil

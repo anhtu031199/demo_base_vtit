@@ -1,7 +1,5 @@
 package com.tuna.nothingapp.ui.home
 
-import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -12,6 +10,7 @@ import com.tuna.nothingapp.databinding.FragmentHomeBinding
 import com.tuna.nothingapp.ui.viewPager.adapter.HomeViewpager2Adapter
 import com.tuna.nothingapp.viewmodel.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
@@ -22,6 +21,13 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
     override fun getViewModelBindingVariable(): Int = BR.viewModel
 
     override fun initView() {
+        viewModel.showLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                showLoading()
+            } else {
+                hideLoading()
+            }
+        }
         setupViewPager()
         Glide.with(this)
             .asBitmap()
@@ -38,10 +44,18 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
     }
 
     override fun initData() {
-
+        viewModel.longitude.observe(viewLifecycleOwner) {
+            viewModel.initData()
+            Timber.d("tuna: longitude observer")
+        }
+        viewModel.currentLocation.observe(viewLifecycleOwner) {
+            showToast(it)
+            Timber.d("tuna: $it")
+            Timber.d("tuna: current location observer")
+        }
     }
 
-    private fun setupViewPager(){
+    private fun setupViewPager() {
         val adapter = HomeViewpager2Adapter(parentFragmentManager, lifecycle)
         binding.viewPagerHome.adapter = adapter
         binding.bottomNavbarHome.setOnItemSelectedListener {

@@ -39,7 +39,7 @@
             android:gravity="start"
             android:includeFontPadding="false"
             android:singleLine="true"
-            android:text="Dan Phuong, Ha NoiDan Phuong, Ha NoiDan Phuong, Ha Noi"
+            android:text="@{viewModel.currentLocation}"
             android:maxLength="25"
             android:textColor="@color/primary_reverse"
             app:layout_constraintBottom_toBottomOf="@id/guideline_12_hor"
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_20dp"
             android:includeFontPadding="false"
-            android:text="@{viewModel.current.weather.get(0).main}"
+            android:text="@{viewModel.currentWeather.weather.get(0).main}"
             app:layout_constraintBottom_toTopOf="@id/tv_date_time"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Clear" />

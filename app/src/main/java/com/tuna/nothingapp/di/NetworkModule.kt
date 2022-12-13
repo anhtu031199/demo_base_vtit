@@ -3,22 +3,17 @@ package com.tuna.nothingapp.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.tuna.nothingapp.BuildConfig
-import com.tuna.nothingapp.data.remote.services.LocationService
+import com.tuna.nothingapp.data.remote.services.CurrentLocationService
+import com.tuna.nothingapp.data.remote.services.SearchLocationService
 import com.tuna.nothingapp.data.remote.services.WeatherService
-import com.tuna.nothingapp.data.repository.WeatherRepository
-import com.tuna.nothingapp.data.repository.impl.WeatherRepositoryImpl
-import com.tuna.nothingapp.utils.Constants
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import javax.inject.Named
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -55,14 +50,26 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideLocationService(
+    fun provideSearchLocationService(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
-    ): LocationService = Retrofit.Builder()
+    ): SearchLocationService = Retrofit.Builder()
         .addConverterFactory(gsonConverterFactory)
         .client(okHttpClient)
-        .baseUrl(BuildConfig.BASE_LOCATION_URL)
+        .baseUrl(BuildConfig.BASE_SEARCH_LOCATION_URL)
         .build()
-        .create(LocationService::class.java)
+        .create(SearchLocationService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideCurrentLocationService(
+        okHttpClient: OkHttpClient,
+        gsonConverterFactory: GsonConverterFactory
+    ): CurrentLocationService = Retrofit.Builder()
+        .addConverterFactory(gsonConverterFactory)
+        .client(okHttpClient)
+        .baseUrl(BuildConfig.BASE_CURRENT_LOCATION_URL)
+        .build()
+        .create(CurrentLocationService::class.java)
 
 }
