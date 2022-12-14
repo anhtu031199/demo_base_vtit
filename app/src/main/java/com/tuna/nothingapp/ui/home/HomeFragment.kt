@@ -7,6 +7,7 @@ import com.tuna.nothingapp.BR
 import com.tuna.nothingapp.R
 import com.tuna.nothingapp.base.BaseFragment
 import com.tuna.nothingapp.databinding.FragmentHomeBinding
+import com.tuna.nothingapp.extensions.orDefault
 import com.tuna.nothingapp.ui.viewPager.adapter.HomeViewpager2Adapter
 import com.tuna.nothingapp.viewmodel.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,11 +22,23 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
     override fun getViewModelBindingVariable(): Int = BR.viewModel
 
     override fun initView() {
-        viewModel.showLoading.observe(viewLifecycleOwner) {
+        viewModel.showLoading.observeSingle(viewLifecycleOwner) {
             if (it) {
                 showLoading()
             } else {
                 hideLoading()
+            }
+        }
+        viewModel.showErrorDialog.observeSingle(viewLifecycleOwner) {
+            if (it) {
+                showErrorDialog(
+                    message = viewModel.errorMessage.value.orDefault(),
+                    positiveButton = "Retry",
+                    onPositive = {
+                        viewModel.initData()
+                    })
+            } else {
+                hideDialog()
             }
         }
         setupViewPager()
@@ -44,11 +57,11 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
     }
 
     override fun initData() {
-        viewModel.longitude.observe(viewLifecycleOwner) {
+        viewModel.longitude.observeSingle(viewLifecycleOwner) {
             viewModel.initData()
             Timber.d("tuna: longitude observer")
         }
-        viewModel.currentLocation.observe(viewLifecycleOwner) {
+        viewModel.currentLocation.observeSingle(viewLifecycleOwner) {
             showToast(it)
             Timber.d("tuna: $it")
             Timber.d("tuna: current location observer")
@@ -56,8 +69,7 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
     }
 
     private fun setupViewPager() {
-        val adapter = HomeViewpager2Adapter(parentFragmentManager, lifecycle)
-        binding.viewPagerHome.adapter = adapter
+        binding.viewPagerHome.adapter = HomeViewpager2Adapter(childFragmentManager, lifecycle)
         binding.bottomNavbarHome.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_now -> {
@@ -98,9 +110,7 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
                     3 -> {
                         binding.bottomNavbarHome.menu.findItem(R.id.menu_aqi).isChecked = true
                     }
-                    else -> {
-
-                    }
+                    else -> {}
                 }
                 super.onPageSelected(position)
             }

@@ -12,6 +12,12 @@
         <item name="android:textSize">@dimen/dimen_18sp</item>
         <item name="lineHeight">@dimen/dimen_20dp</item>
     </style>
+    <style name="style_text_regular_17sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_regular</item>
+        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textSize">@dimen/dimen_17sp</item>
+        <item name="lineHeight">@dimen/dimen_20dp</item>
+    </style>
     <style name="style_text_semibold_18sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_semibold</item>
         <item name="android:textColor">@color/primary_reverse</item>
@@ -78,4 +84,5 @@
     <dimen name="dimen_120sp">120sp</dimen>
     <dimen name="dimen_32sp">32sp</dimen>
     <dimen name="dimen_38dp">38dp</dimen>
+    <dimen name="dimen_14sp">14sp</dimen>
 </resources>

@@ -91,6 +91,7 @@ dependencies {
     api Deps.googleServices
     api Deps.rxpermissions
     api Deps.rxAndroid3
+    api Deps.sweetDialog
 
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'

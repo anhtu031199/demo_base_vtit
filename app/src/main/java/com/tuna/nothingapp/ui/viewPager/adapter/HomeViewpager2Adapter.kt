@@ -32,5 +32,4 @@ class HomeViewpager2Adapter(fragmentManager: FragmentManager, lifecycle: Lifecyc
             }
         }
     }
-
 }

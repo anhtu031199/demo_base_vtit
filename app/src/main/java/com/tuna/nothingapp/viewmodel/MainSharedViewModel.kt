@@ -15,6 +15,7 @@ import com.tuna.nothingapp.data.repository.WeatherRepository
 import com.tuna.nothingapp.navigation.NavigationCommand
 import com.tuna.nothingapp.ui.home.HomeFragmentDirections
 import com.tuna.nothingapp.ui.splash.SplashFragmentDirections
+import com.tuna.nothingapp.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -31,28 +32,32 @@ class MainSharedViewModel @Inject constructor(
     private val searchLocationRepository: SearchLocationRepository,
     private val currentLocationRepository: CurrentLocationRepository
 ) : BaseViewModel(app) {
-    private var _currentWeather = MutableLiveData<Current>()
-    private var _currentLocation = MutableLiveData<String>()
-    private var _currentTemp = MutableLiveData<Int>()
-    private var _feelsLikeTemp = MutableLiveData<Int>()
-    private var _dateTime = MutableLiveData<String>()
-    private var _longitude = MutableLiveData<Double>()
-    private var _latitude = MutableLiveData<Double>()
-    private val _hasLocationPermission = MutableLiveData<Boolean>()
+    private var _currentWeather = SingleLiveEvent<Current>()
+    private var _currentLocation = SingleLiveEvent<String>()
+    private var _currentTemp = SingleLiveEvent<Int>()
+    private var _feelsLikeTemp = SingleLiveEvent<Int>()
+    private var _dateTime = SingleLiveEvent<String>()
+    private var _longitude = SingleLiveEvent<Double>()
+    private var _latitude = SingleLiveEvent<Double>()
+    private val _hasLocationPermission = SingleLiveEvent<Boolean>()
+    private val _errorMessage = SingleLiveEvent<String>()
 
-    val currentWeather: LiveData<Current> = _currentWeather
-    val currentLocation: LiveData<String> = _currentLocation
-    val currentTemp: LiveData<Int> = _currentTemp
-    val feelsLikeTemp: LiveData<Int> = _feelsLikeTemp
-    val dateTime: LiveData<String> = _dateTime
-    val hasLocationPermission: LiveData<Boolean> = _hasLocationPermission
-    val longitude: LiveData<Double> = _longitude
-    val latitude: LiveData<Double> = _latitude
-    val showLoading = MutableLiveData<Boolean>()
-    val hasData = MutableLiveData<Boolean>()
+    val currentWeather: SingleLiveEvent<Current> = _currentWeather
+    val currentLocation: SingleLiveEvent<String> = _currentLocation
+    val currentTemp: SingleLiveEvent<Int> = _currentTemp
+    val feelsLikeTemp: SingleLiveEvent<Int> = _feelsLikeTemp
+    val dateTime: SingleLiveEvent<String> = _dateTime
+    val hasLocationPermission: SingleLiveEvent<Boolean> = _hasLocationPermission
+    val longitude: SingleLiveEvent<Double> = _longitude
+    val latitude: SingleLiveEvent<Double> = _latitude
+    val showLoading = SingleLiveEvent<Boolean>()
+    val showErrorDialog = SingleLiveEvent<Boolean>()
+    val hasData = SingleLiveEvent<Boolean>()
+    val errorMessage: SingleLiveEvent<String> = _errorMessage
 
     fun initData() {
         viewModelScope.launch {
+            showErrorDialog.value = false
             showLoading.value = true
             try {
                 val weather = weatherRepository.getCurrentWeather(WeatherRequestBody(latitude.value?:0.0, longitude.value?:0.0))
@@ -65,15 +70,13 @@ class MainSharedViewModel @Inject constructor(
                     CurrentLocationRequestBody("${_latitude.value},${_longitude.value}")
                 )
                 _currentLocation.value = location.items[0].address.district
-
+                showLoading.value = false
             } catch (e: Exception) {
                 hasData.value = false
+                _errorMessage.value = e.message
+                showErrorDialog.value = true
                 Timber.e("tuna: $e")
-                if (e is ConnectException) {
-                    initData()
-                }
             }
-            showLoading.value = false
         }
         _dateTime.value = SimpleDateFormat("EEE, d MMM, ", Locale.ENGLISH).format(Date())
     }

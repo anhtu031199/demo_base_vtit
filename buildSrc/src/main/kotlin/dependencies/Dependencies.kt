@@ -75,6 +75,7 @@ object Versions {
     const val spinkit = "1.4.0"
     const val viewPager = "1.0.0"
     const val locationServices = "21.0.1"
+    const val sweetDialog = "1.6.2"
 }
 
 object Deps {
@@ -172,6 +173,7 @@ object Deps {
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
     const val viewPager = "androidx.viewpager2:viewpager2:${Versions.viewPager}"
     const val locationServices = "com.google.android.gms:play-services-location:${Versions.locationServices}"
+    const val sweetDialog = "com.github.f0ris.sweetalert:library:${Versions.sweetDialog}"
 }
 
 object TestDeps {

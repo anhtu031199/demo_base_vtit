@@ -7,6 +7,7 @@
         android:layout_height="match_parent">
 
         <androidx.cardview.widget.CardView
+            android:background="#FFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/radius_large"
@@ -30,15 +31,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/progress_bar_size"
                     android:layout_gravity="center"
-                    app:SpinKit_Color="@color/primary_reverse" />
+                    app:SpinKit_Color="#111827" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/style_text_regular_11sp"
+                    style="@style/style_text_semibold_18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/primary_reverse"
+                    android:textColor="#111827"
                     android:layout_marginTop="5dp"
-                    android:text="Loading..." />
+                    android:text="@string/loading" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

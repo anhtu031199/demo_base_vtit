@@ -8,6 +8,7 @@
     <color name="primary_50">#80111827</color>
     <color name="primary_reverse">#FFFFFF</color>
     <color name="primary_reverse_50">#80FFFFFF</color>
+    <color name="primary_reverse_10">#1AFFFFFF</color>
     <color name="secondary">#282B32</color>
 
     <!--  Semantic  -->

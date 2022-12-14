@@ -36,14 +36,19 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_20dp"
             android:alpha="0.9"
+            android:drawableEnd="@drawable/ic_edit"
+            android:drawablePadding="5dp"
             android:gravity="start"
             android:includeFontPadding="false"
+            android:maxLength="20"
+            android:onClick="@{() -> viewModel.navigateHomeToCityList()}"
             android:singleLine="true"
             android:text="@{viewModel.currentLocation}"
-            android:maxLength="25"
             android:textColor="@color/primary_reverse"
+            app:drawableTint="@color/primary_reverse"
             app:layout_constraintBottom_toBottomOf="@id/guideline_12_hor"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Hanoi" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_current_degree"
@@ -53,7 +58,7 @@
             android:layout_marginEnd="@dimen/dimen_20dp"
             android:alpha="0.9"
             android:includeFontPadding="false"
-            android:text="@{viewModel.currentTemp.toString()+`°`}"
+            android:text="@{(viewModel.currentTemp.toString()??`----`)+`°`}"
             android:textColor="@color/success"
             android:textSize="64sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_location"
@@ -81,8 +86,8 @@
             style="@style/style_text_regular_18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:format24Hour="HH:mm"
             android:format12Hour="HH:mm"
+            android:format24Hour="HH:mm"
             app:layout_constraintBottom_toBottomOf="@id/tv_date_time"
             app:layout_constraintStart_toEndOf="@id/tv_date_time" />
 

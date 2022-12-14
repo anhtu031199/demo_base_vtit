@@ -12,19 +12,19 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.fragment.findNavController
+import cn.pedant.SweetAlert.SweetAlertDialog
+import com.tuna.nothingapp.R
 import com.tuna.nothingapp.extensions.showToast
 import com.tuna.nothingapp.navigation.NavigationCommand
 import com.tuna.nothingapp.navigation.Navigator
 import com.tuna.nothingapp.utils.ProgressLoadingDialog
-import com.tuna.nothingapp.viewmodel.MainSharedViewModel
 import javax.inject.Inject
 
-abstract class BaseFragment<VM: BaseViewModel, DB: ViewDataBinding> : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment() {
     protected lateinit var binding: DB
+    private lateinit var dialog: SweetAlertDialog
     protected abstract val viewModel: VM
 
     @LayoutRes
@@ -34,6 +34,7 @@ abstract class BaseFragment<VM: BaseViewModel, DB: ViewDataBinding> : Fragment()
     protected abstract fun initData()
 
     protected open fun handleBackStackEntry(navBackStackEntry: NavBackStackEntry) {}
+
     @Inject
     lateinit var navigator: Navigator
 
@@ -41,6 +42,7 @@ abstract class BaseFragment<VM: BaseViewModel, DB: ViewDataBinding> : Fragment()
         super.onCreate(savedInstanceState)
         viewModel.setNavigator(navigator)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,6 +62,7 @@ abstract class BaseFragment<VM: BaseViewModel, DB: ViewDataBinding> : Fragment()
         initData()
         setupBackStackObserver()
         observerEventNavigate()
+        dialog = SweetAlertDialog(requireContext())
     }
 
     fun showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
@@ -72,6 +75,28 @@ abstract class BaseFragment<VM: BaseViewModel, DB: ViewDataBinding> : Fragment()
 
     fun hideLoading() {
         ProgressLoadingDialog.hide(childFragmentManager)
+    }
+
+    fun showErrorDialog(
+        title: String = getString(R.string.error),
+        message: String,
+        positiveButton: String?,
+        onPositive: () -> Unit
+    ) {
+        dialog = SweetAlertDialog(requireContext(), SweetAlertDialog.ERROR_TYPE)
+            .setTitleText(title)
+            .setContentText(message)
+            .setConfirmButton(positiveButton) {
+                onPositive.invoke()
+            }
+        dialog.show()
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.confirmButtonBackgroundColor = R.color.primary_reverse
+        dialog.confirmButtonTextColor = R.color.primary
+    }
+
+    fun hideDialog() {
+        dialog.hide()
     }
 
     private fun setupBackStackObserver() {
@@ -173,7 +198,6 @@ abstract class BaseFragment<VM: BaseViewModel, DB: ViewDataBinding> : Fragment()
     // check if this fragment is under to nested parent (nav_host_fragment -> bottom_nav_host_fragment -> fragment(component) -> self)
     private fun getRootNestedNavController() =
         parentFragment?.parentFragment?.parentFragment?.findNavController()
-
 
 
 }
