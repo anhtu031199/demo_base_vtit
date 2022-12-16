@@ -4,9 +4,8 @@ import androidx.fragment.app.activityViewModels
 import com.tuna.nothingapp.BR
 import com.tuna.nothingapp.R
 import com.tuna.nothingapp.base.BaseFragment
-import com.tuna.nothingapp.databinding.FragmentCityListBinding
 import com.tuna.nothingapp.databinding.FragmentHourlyBinding
-import com.tuna.nothingapp.databinding.FragmentNowBinding
+import com.tuna.nothingapp.ui.viewPager.adapter.HourlyRecyclerAdapter
 import com.tuna.nothingapp.viewmodel.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +21,11 @@ class HourlyFragment : BaseFragment<MainSharedViewModel, FragmentHourlyBinding>(
     }
 
     override fun initData() {
+        binding.rcvHourly.adapter = viewModel.listHourlyForecast.value?.let {
+            HourlyRecyclerAdapter(
+                it
+            )
+        }
     }
 
 }

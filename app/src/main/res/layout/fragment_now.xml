@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.tuna.nothingapp.viewmodel.MainSharedViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,10 +48,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="5dp"
             android:id="@+id/view_feel_like"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="@id/guideline_60_hor"
             app:layout_constraintEnd_toEndOf="@id/guideline_50_ver"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +60,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_temperature"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="@dimen/now_item_img_size"
                 android:background="@drawable/bg_item_weather_now"
                 android:padding="8dp"
                 android:src="@drawable/ic_temperature"
@@ -67,33 +71,34 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_marginStart="5dp"
                 android:id="@+id/tv_feel_like_title"
                 style="@style/style_text_regular_17sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="@string/feels_like"
                 android:textColor="@color/primary_reverse_50"
                 app:layout_constraintStart_toEndOf="@id/img_temperature"
                 app:layout_constraintTop_toTopOf="@id/img_temperature" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_marginStart="5dp"
                 android:id="@+id/tv_feel_like_content"
                 style="@style/style_text_semibold_18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="19°"
+                android:layout_marginStart="5dp"
+                android:text="@{(viewModel.feelsLikeTemp??`----`)+`°`}"
                 app:layout_constraintBottom_toBottomOf="@id/img_temperature"
-                app:layout_constraintStart_toEndOf="@id/img_temperature" />
+                app:layout_constraintStart_toEndOf="@id/img_temperature"
+                tools:text="99°" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="5dp"
             android:id="@+id/view_wind"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="@id/guideline_60_hor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideline_50_ver"
@@ -102,7 +107,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_wind"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="@dimen/now_item_img_size"
                 android:background="@drawable/bg_item_weather_now"
                 android:padding="8dp"
                 android:src="@drawable/ic_wind"
@@ -113,33 +118,35 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_marginStart="5dp"
                 android:id="@+id/tv_wind_title"
                 style="@style/style_text_regular_17sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="@string/wind"
                 android:textColor="@color/primary_reverse_50"
                 app:layout_constraintStart_toEndOf="@id/img_wind"
                 app:layout_constraintTop_toTopOf="@id/img_wind" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_marginStart="5dp"
                 android:id="@+id/tv_wind_content"
                 style="@style/style_text_semibold_18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10km/h"
+                android:layout_marginStart="5dp"
+                android:text="@{(viewModel.windSpeed ?? `----`)+`km/h`}"
                 app:layout_constraintBottom_toBottomOf="@id/img_wind"
-                app:layout_constraintStart_toEndOf="@id/img_wind" />
+                app:layout_constraintStart_toEndOf="@id/img_wind"
+                tools:text="0km/h" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="5dp"
             android:id="@+id/view_precipitation"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:padding="10dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline_50_ver"
             app:layout_constraintStart_toStartOf="parent"
@@ -148,7 +155,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_precipitation"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="@dimen/now_item_img_size"
                 android:background="@drawable/bg_item_weather_now"
                 android:padding="8dp"
                 android:src="@drawable/ic_precipitation"
@@ -159,22 +166,22 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_marginStart="5dp"
                 android:id="@+id/tv_precipitation_title"
                 style="@style/style_text_regular_17sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="@string/precipitation"
                 android:textColor="@color/primary_reverse_50"
                 app:layout_constraintStart_toEndOf="@id/img_precipitation"
                 app:layout_constraintTop_toTopOf="@id/img_precipitation" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_marginStart="5dp"
                 android:id="@+id/tv_precipitation_content"
                 style="@style/style_text_semibold_18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="80%"
                 app:layout_constraintBottom_toBottomOf="@id/img_precipitation"
                 app:layout_constraintStart_toEndOf="@id/img_precipitation" />
@@ -182,10 +189,57 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="5dp"
+            android:id="@+id/view_uv_index"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_50_ver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline_60_hor">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_uv_index"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/now_item_img_size"
+                android:background="@drawable/bg_item_weather_now"
+                android:padding="8dp"
+                android:src="@drawable/ic_uv"
+                android:tint="@color/primary_reverse"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_uv_index_title"
+                style="@style/style_text_regular_17sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/uv_index"
+                android:textColor="@color/primary_reverse_50"
+                app:layout_constraintStart_toEndOf="@id/img_uv_index"
+                app:layout_constraintTop_toTopOf="@id/img_uv_index" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_uv_index_content"
+                style="@style/style_text_semibold_18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@{viewModel.uvIndex.toString()??`----`}"
+                app:layout_constraintBottom_toBottomOf="@id/img_uv_index"
+                app:layout_constraintStart_toEndOf="@id/img_uv_index"
+                tools:text="10" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/view_humidity"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideline_50_ver"
@@ -194,7 +248,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_humidity"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="@dimen/now_item_img_size"
                 android:background="@drawable/bg_item_weather_now"
                 android:padding="8dp"
                 android:src="@drawable/ic_humidity"
@@ -205,23 +259,24 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_marginStart="5dp"
                 android:id="@+id/tv_humidity_title"
                 style="@style/style_text_regular_17sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="@string/humidity"
                 android:textColor="@color/primary_reverse_50"
                 app:layout_constraintStart_toEndOf="@id/img_humidity"
                 app:layout_constraintTop_toTopOf="@id/img_humidity" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_marginStart="5dp"
                 android:id="@+id/tv_humidity_content"
                 style="@style/style_text_semibold_18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="79%"
+                android:layout_marginStart="5dp"
+                android:text="@{(viewModel.humidity??`----`)+`%`}"
+                tools:text="100%"
                 app:layout_constraintBottom_toBottomOf="@id/img_humidity"
                 app:layout_constraintStart_toEndOf="@id/img_humidity" />
 

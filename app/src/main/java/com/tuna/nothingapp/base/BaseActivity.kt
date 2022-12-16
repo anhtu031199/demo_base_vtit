@@ -26,8 +26,9 @@ abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding> : AppCompatAct
 //            WindowManager.LayoutParams.FLAG_FULLSCREEN
 //        )
         binding = DataBindingUtil.setContentView(this, getLayoutId())
-        binding.setVariable(getViewModelBindingVariable(), viewModel)
-
+        binding.apply {
+            setVariable(getViewModelBindingVariable(), viewModel)
+        }
         initView()
         initData()
     }

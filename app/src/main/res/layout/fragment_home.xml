@@ -64,7 +64,7 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_location"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_current_weather"
-            tools:text="19°" />
+            tools:text="69°" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_date_time"
@@ -84,6 +84,7 @@
         <TextClock
             android:id="@+id/tv_hour"
             style="@style/style_text_regular_18sp"
+            android:fontFamily="@font/linote_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:format12Hour="HH:mm"
@@ -101,7 +102,7 @@
             android:text="@{viewModel.currentWeather.weather.get(0).main}"
             app:layout_constraintBottom_toTopOf="@id/tv_date_time"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Clear" />
+            tools:text="Nắng vỡ đầu" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_weather_current_blur"
@@ -132,7 +133,7 @@
             android:id="@+id/linear_weather_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@drawable/bg_bottom_bar"
+            android:background="@drawable/bg_viewpager"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="@id/guideline_60_hor">
@@ -141,6 +142,7 @@
                 android:id="@+id/viewPager_home"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                app:userInputEnabled="@{false}"
                 android:background="@drawable/bg_viewpager"
                 app:layout_constraintBottom_toTopOf="@id/bottom_navbar_home"
                 app:layout_constraintTop_toTopOf="parent" />

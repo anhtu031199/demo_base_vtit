@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,14 +12,35 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_viewpager">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/style_text_bold_48sp"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_20_hor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hourly"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title_now_fragment"
+            style="@style/style_text_bold_24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_12dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/hourly_forecast"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_hourly"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/dimen_5dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/dimen_12dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline_20_hor"
+            tools:listitem="@layout/item_hourly" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

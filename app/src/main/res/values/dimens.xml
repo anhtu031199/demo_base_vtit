@@ -32,4 +32,7 @@
     <dimen name="dimen_84dp">84dp</dimen>
     <dimen name="bottom_navbar_bottom_size">24dp</dimen>
     <dimen name="dimen_40dp">40dp</dimen>
+    <dimen name="now_item_img_size">44dp</dimen>
+    <dimen name="dimen_5dp">5dp</dimen>
+    <dimen name="dimen_2dp">2dp</dimen>
 </resources>

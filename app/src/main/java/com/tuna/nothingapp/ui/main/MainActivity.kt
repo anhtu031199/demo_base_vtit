@@ -40,10 +40,10 @@ class MainActivity : BaseActivity<MainSharedViewModel, ActivityMainBinding>() {
                     location.addOnSuccessListener {
                         if (it != null) {
                             viewModel.updateLocation(it.latitude, it.longitude)
-//                        Toast.makeText(this, "${it.latitude}, ${it.longitude}", Toast.LENGTH_SHORT).show()
+                            Timber.d("tuna: onSuccess")
                         }
                     }
-                    Timber.d("tuna: onSuccess")
+
                 },
                 {
                     Timber.d("tuna: onFail")

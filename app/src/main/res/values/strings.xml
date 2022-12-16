@@ -17,4 +17,5 @@
     <string name="wind">Wind</string>
     <string name="precipitation">Precipitation</string>
     <string name="humidity">Humidity</string>
+    <string name="uv_index">UV Index</string>
 </resources>

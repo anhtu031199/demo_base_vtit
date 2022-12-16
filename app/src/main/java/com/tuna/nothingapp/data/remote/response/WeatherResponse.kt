@@ -63,7 +63,7 @@ data class FeelsLike(
 data class Hourly(
     @SerializedName("clouds") val clouds: Int,
     @SerializedName("dew_point") val dew_point: Double,
-    @SerializedName("dt") val dt: Int,
+    @SerializedName("dt") val dt: Long,
     @SerializedName("feels_like") val feels_like: Double,
     @SerializedName("humidity") val humidity: Int,
     @SerializedName("pop") val pop: Double,
