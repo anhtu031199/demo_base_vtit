@@ -67,6 +67,7 @@
         <entry key="app/src/main/res/layout/fragment_now.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.28003420265070544" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.21546052631578946" />
+        <entry key="app/src/main/res/layout/item_daily.xml" value="0.28003420265070544" />
         <entry key="app/src/main/res/layout/item_forecast.xml" value="0.67" />
         <entry key="app/src/main/res/layout/item_hourly.xml" value="0.2757130509939499" />
         <entry key="app/src/main/res/layout/item_list_hourly_forecast.xml" value="0.21546052631578946" />

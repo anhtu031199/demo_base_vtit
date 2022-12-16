@@ -5,24 +5,24 @@
     <data>
 
         <variable
-            name="hourly"
-            type="com.tuna.nothingapp.data.remote.response.Hourly" />
+            name="itemUi"
+            type="com.tuna.nothingapp.ui.viewPager.data.HourlyItemUI" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        onSingleClick="@{() -> itemUi.onItemClick()}"
         android:layout_width="60dp"
         android:layout_height="match_parent"
         android:layout_margin="3dp"
         android:background="@drawable/bg_item_weather_hourly"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingTop="@dimen/dimen_12dp"
-        android:paddingBottom="@dimen/dimen_12dp">
+        android:paddingVertical="@dimen/dimen_5dp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_item_hourly_time"
             style="@style/style_text_semibold_18sp"
-            textTime="@{hourly.dt}"
+            textTime="@{itemUi.dt}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -32,9 +32,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_item_hourly"
-            android:layout_width="38dp"
+            android:layout_width="match_parent"
             android:layout_height="38dp"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/dimen_5dp"
             android:layout_weight="1"
             android:background="@drawable/bg_item_weather_hourly"
             android:src="@drawable/ic_small_day_rainy" />
@@ -42,7 +43,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_item_hourly_temperature"
             style="@style/style_text_semibold_18sp"
-            textDouble="@{hourly.temp}"
+            textTemperature="@{itemUi.temp}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

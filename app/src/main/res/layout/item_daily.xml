@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="itemUi"
+            type="com.tuna.nothingapp.ui.viewPager.data.DailyItemUI" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        onSingleClick="@{() -> itemUi.onItemClick()}"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:background="@drawable/bg_item_weather_hourly"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/dimen_5dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_daily_time"
+            style="@style/style_text_semibold_18sp"
+            textDate="@{itemUi.dt}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            tools:text="Mon" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_item_daily"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/dimen_5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_item_weather_hourly"
+            android:src="@drawable/ic_small_day_clear" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingHorizontal="@dimen/dimen_12dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_50_hor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_item_daily_max_temperature"
+                style="@style/style_text_semibold_18sp"
+                textTemperature="@{itemUi.maxTemp}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:textColor="@color/error"
+                app:layout_constraintBottom_toBottomOf="@id/guideline_50_hor"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="90" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_item_daily_min_temperature"
+                style="@style/style_text_semibold_18sp"
+                textTemperature="@{itemUi.minTemp}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:textColor="@color/info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/guideline_50_hor"
+                tools:text="90" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

@@ -25,7 +25,6 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
-            android:configChanges="uiMode|colorMode"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,5 +1,8 @@
 package com.tuna.nothingapp.ui.home
 
+import android.os.Handler
+import android.os.Looper
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -13,6 +16,7 @@ import com.tuna.nothingapp.viewmodel.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
     override val viewModel: MainSharedViewModel by activityViewModels()
@@ -20,8 +24,9 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
     override fun getLayoutId(): Int = R.layout.fragment_home
 
     override fun getViewModelBindingVariable(): Int = BR.viewModel
-
+    var doubleBackToExitPressedOnce = false
     override fun initView() {
+        onBackPress()
         viewModel.showLoading.observeSingle(viewLifecycleOwner) {
             if (it) {
                 showLoading()
@@ -54,6 +59,26 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
             .placeholder(R.drawable.img_home_background)
             .fitCenter()
             .into(binding.imgWeatherCurrent)
+    }
+
+    private fun onBackPress() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (doubleBackToExitPressedOnce) {
+                        requireActivity().finish()
+                        return
+                    }
+
+                    doubleBackToExitPressedOnce = true
+                    showToast(getString(R.string.confirm_exit))
+
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        doubleBackToExitPressedOnce = false
+                    }, 2000)
+                }
+            })
     }
 
     override fun initData() {

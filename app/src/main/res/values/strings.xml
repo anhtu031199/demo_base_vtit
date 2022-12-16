@@ -11,11 +11,12 @@
     <string name="error">Error</string>
     <string name="loading">Loading…</string>
     <string name="weather_now">Weather now</string>
-    <string name="hourly_forecast">Hourly forecast</string>
-    <string name="daily_forecast">Daily forecast</string>
+    <string name="hourly_forecast">Next 24h forecast</string>
+    <string name="daily_forecast">Next 7 days forecast</string>
     <string name="air_visual">Air Visual</string>
     <string name="wind">Wind</string>
     <string name="precipitation">Precipitation</string>
     <string name="humidity">Humidity</string>
     <string name="uv_index">UV Index</string>
+    <string name="confirm_exit">Press Back again to close</string>
 </resources>

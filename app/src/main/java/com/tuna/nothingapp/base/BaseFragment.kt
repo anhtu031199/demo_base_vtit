@@ -96,7 +96,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
     }
 
     fun hideDialog() {
-        dialog.hide()
+        dialog.dismiss()
     }
 
     private fun setupBackStackObserver() {
