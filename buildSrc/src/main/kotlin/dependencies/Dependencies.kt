@@ -76,6 +76,8 @@ object Versions {
     const val viewPager = "1.0.0"
     const val locationServices = "21.0.1"
     const val sweetDialog = "1.6.2"
+    const val cardview = "1.0.0"
+    const val easyPermission = "3.0.0"
 }
 
 object Deps {
@@ -174,6 +176,8 @@ object Deps {
     const val viewPager = "androidx.viewpager2:viewpager2:${Versions.viewPager}"
     const val locationServices = "com.google.android.gms:play-services-location:${Versions.locationServices}"
     const val sweetDialog = "com.github.f0ris.sweetalert:library:${Versions.sweetDialog}"
+    const val cardview = "androidx.cardview:cardview:${Versions.cardview}"
+    const val easyPermission = "pub.devrel:easypermissions:${Versions.easyPermission}"
 }
 
 object TestDeps {

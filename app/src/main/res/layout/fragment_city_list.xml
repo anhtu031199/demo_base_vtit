@@ -1,24 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.tuna.nothingapp.viewmodel.MainSharedViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@drawable/bg_home"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/style_text_bold_48sp"
+        <androidx.appcompat.widget.AppCompatImageView
+            backgroundImg="@{viewModel.currentImg}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/bg_d" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_15_hor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="City List Screen"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.12" />
+
+        <RelativeLayout
+            android:id="@+id/toolbar_daily"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline_15_hor"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title_toolbar_daily"
+                style="@style/style_text_bold_32sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:includeFontPadding="false"
+                android:text="@string/search_location" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_daily_back"
+                onSingleClick="@{()->viewModel.navigateBack()}"
+                android:layout_width="@dimen/dimen_40dp"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:elevation="@dimen/dimen_20dp"
+                app:cardBackgroundColor="@color/transparent"
+                app:cardCornerRadius="@dimen/dimen_90dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="80"
+                    android:background="@drawable/bg_button_primary"
+                    android:padding="@dimen/dimen_12dp"
+                    android:src="@drawable/ic_back"
+                    android:tint="@color/primary_reverse" />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

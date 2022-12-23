@@ -6,50 +6,59 @@
 
         <variable
             name="itemUi"
-            type="com.tuna.nothingapp.ui.viewPager.data.HourlyItemUI" />
+            type="com.tuna.nothingapp.data.local.HourlyItemUI" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        onSingleClick="@{() -> itemUi.onItemClick()}"
-        android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:layout_margin="3dp"
-        android:background="@drawable/bg_item_weather_hourly"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingVertical="@dimen/dimen_5dp">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_item_hourly_time"
-            style="@style/style_text_semibold_18sp"
-            textTime="@{itemUi.dt}"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:gravity="center"
-            tools:text="9am" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_item_hourly"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="@dimen/dimen_5dp"
-            android:layout_weight="1"
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            onSingleClick="@{() -> itemUi.onItemClick()}"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
             android:background="@drawable/bg_item_weather_hourly"
-            android:src="@drawable/ic_small_day_rainy" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_item_hourly_temperature"
-            style="@style/style_text_semibold_18sp"
-            textTemperature="@{itemUi.temp}"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
             android:gravity="center"
-            tools:text="90" />
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/dimen_5dp">
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_item_hourly_time"
+                style="@style/style_text_semibold_18sp"
+                textTime="@{itemUi.dt}"
+                timeZone="@{itemUi.timeZone}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/primary_90"
+                tools:text="9am" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_item_hourly"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/dimen_5dp"
+                android:layout_weight="1"
+                loadImg="@{itemUi.icon}"
+                tools:src="@drawable/ic_50d"
+                android:src="@color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_item_hourly_temperature"
+                style="@style/style_text_semibold_18sp"
+                textTemperature="@{itemUi.temp}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/primary_90"
+                tools:text="90" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </FrameLayout>
+
 </layout>

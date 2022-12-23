@@ -2,12 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="true">
         <layer-list>
-            <item android:gravity="top|center_horizontal">
+            <item android:gravity="center">
                 <shape android:shape="rectangle">
-                    <size android:width="50dp" android:height="3dp" />
-                    <solid android:color="@color/primary_reverse" />
-                    <corners android:bottomLeftRadius="3dp"
-                        android:bottomRightRadius="3dp" />
+                    <solid android:color="@color/primary" />
+                    <corners android:radius="@dimen/dimen_20dp" />
                 </shape>
             </item>
         </layer-list>

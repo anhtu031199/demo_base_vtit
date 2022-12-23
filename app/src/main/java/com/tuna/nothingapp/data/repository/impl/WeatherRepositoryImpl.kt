@@ -9,12 +9,11 @@ import javax.inject.Inject
 class WeatherRepositoryImpl @Inject constructor(private val weatherService: WeatherService) :
     WeatherRepository {
     override suspend fun getCurrentWeather(weatherRequestBody: WeatherRequestBody): WeatherResponse {
-        val response = weatherService.getCurrentWeather(
+        return weatherService.getCurrentWeather(
             weatherRequestBody.lat,
             weatherRequestBody.lon,
             weatherRequestBody.units,
             weatherRequestBody.appID
         )
-        return response
     }
 }

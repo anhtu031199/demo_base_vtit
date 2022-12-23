@@ -4,23 +4,21 @@ import android.os.Handler
 import android.os.Looper
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
-import androidx.viewpager2.widget.ViewPager2
-import com.bumptech.glide.Glide
+import androidx.lifecycle.lifecycleScope
 import com.tuna.nothingapp.BR
 import com.tuna.nothingapp.R
 import com.tuna.nothingapp.base.BaseFragment
+import com.tuna.nothingapp.data.local.HourlyItemUI
 import com.tuna.nothingapp.databinding.FragmentHomeBinding
 import com.tuna.nothingapp.extensions.orDefault
-import com.tuna.nothingapp.ui.viewPager.adapter.HomeViewpager2Adapter
 import com.tuna.nothingapp.viewmodel.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
-
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>(), MainSharedViewModel.HourlyCallback {
     override val viewModel: MainSharedViewModel by activityViewModels()
-
     override fun getLayoutId(): Int = R.layout.fragment_home
 
     override fun getViewModelBindingVariable(): Int = BR.viewModel
@@ -46,19 +44,7 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
                 hideDialog()
             }
         }
-        setupViewPager()
-        Glide.with(this)
-            .asBitmap()
-            .load(R.drawable.ic_weather_storm)
-            .override(10, 10)
-            .fitCenter()
-            .into(binding.imgWeatherCurrentBlur)
-        Glide.with(this)
-//            .asBitmap()
-            .load(R.drawable.ic_weather_storm)
-            .placeholder(R.drawable.img_home_background)
-            .fitCenter()
-            .into(binding.imgWeatherCurrent)
+        viewModel.hourlyCallback = this
     }
 
     private fun onBackPress() {
@@ -83,62 +69,23 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>() {
 
     override fun initData() {
         viewModel.longitude.observeSingle(viewLifecycleOwner) {
-            viewModel.initData()
             Timber.d("tuna: longitude observer")
+            viewModel.initData()
         }
         viewModel.currentLocation.observeSingle(viewLifecycleOwner) {
-            showToast(it)
-            Timber.d("tuna: $it")
+//            showToast(it)
+//            Timber.d("tuna: $it")
             Timber.d("tuna: current location observer")
+        }
+        binding.swipeRefresh.setOnRefreshListener {
+            binding.swipeRefresh.isRefreshing = false
+            lifecycleScope.launch {
+                viewModel.initData()
+            }
         }
     }
 
-    private fun setupViewPager() {
-        binding.viewPagerHome.adapter = HomeViewpager2Adapter(childFragmentManager, lifecycle)
-        binding.bottomNavbarHome.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.menu_now -> {
-                    binding.viewPagerHome.currentItem = 0
-                    true
-                }
-                R.id.menu_hourly -> {
-                    binding.viewPagerHome.currentItem = 1
-                    true
-                }
-                R.id.menu_daily -> {
-                    binding.viewPagerHome.currentItem = 2
-                    true
-                }
-                R.id.menu_aqi -> {
-                    binding.viewPagerHome.currentItem = 3
-                    true
-                }
-                else -> {
-                    binding.viewPagerHome.currentItem = 0
-                    true
-                }
-            }
-        }
-        binding.viewPagerHome.registerOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                when (position) {
-                    0 -> {
-                        binding.bottomNavbarHome.menu.findItem(R.id.menu_now).isChecked = true
-                    }
-                    1 -> {
-                        binding.bottomNavbarHome.menu.findItem(R.id.menu_hourly).isChecked = true
-                    }
-                    2 -> {
-                        binding.bottomNavbarHome.menu.findItem(R.id.menu_daily).isChecked = true
-                    }
-                    3 -> {
-                        binding.bottomNavbarHome.menu.findItem(R.id.menu_aqi).isChecked = true
-                    }
-                    else -> {}
-                }
-                super.onPageSelected(position)
-            }
-        })
+    override fun onHourlyItemClick(item: HourlyItemUI) {
+        showToast("Details dialog coming soon")
     }
 }

@@ -92,6 +92,10 @@ dependencies {
     api Deps.rxpermissions
     api Deps.rxAndroid3
     api Deps.sweetDialog
+    api Deps.cardview
+    api Deps.swiperefreshlayout
+    api Deps.ultimateBarX
+    api Deps.easyPermission
 
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'

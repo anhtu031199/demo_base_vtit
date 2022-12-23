@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">Nothing App</string>
+    <string name="app_name">Today.io</string>
     <string name="degree">°</string>
-    <string name="feels_like">Feels like&#160;</string>
+    <string name="dot">•</string>
+    <string name="feels_like">Real feel&#160;</string>
     <string name="now">Now</string>
     <string name="hourly">Hourly</string>
     <string name="daily">Daily</string>
@@ -15,8 +16,12 @@
     <string name="daily_forecast">Next 7 days forecast</string>
     <string name="air_visual">Air Visual</string>
     <string name="wind">Wind</string>
-    <string name="precipitation">Precipitation</string>
+    <string name="pressure">Pressure</string>
     <string name="humidity">Humidity</string>
     <string name="uv_index">UV Index</string>
     <string name="confirm_exit">Press Back again to close</string>
+    <string name="today">Today</string>
+    <string name="next_7_days">Next 7 days ➤</string>
+    <string name="this_week">This week</string>
+    <string name="search_location">Search places</string>
 </resources>

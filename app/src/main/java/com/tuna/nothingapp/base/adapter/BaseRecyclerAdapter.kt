@@ -13,7 +13,6 @@ class BaseRecyclerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
     private var itemList: MutableList<BaseItemModel> = mutableListOf()
     private val viewTypeToLayoutId: MutableMap<Int, Int> = mutableMapOf()
-    private val maxCount: Int = 24
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val binding: ViewDataBinding = DataBindingUtil.inflate(
@@ -37,11 +36,7 @@ class BaseRecyclerAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         holder.bind(itemList[position])
     }
 
-    override fun getItemCount(): Int {
-        return if (itemList.size > maxCount)
-            maxCount
-        else itemList.size
-    }
+    override fun getItemCount(): Int = itemList.size
 
     fun setItems(items: List<BaseItemModel>?) {
         val diffUtil = DiffCallback(itemList, items.orEmpty())

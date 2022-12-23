@@ -2,87 +2,130 @@
 <resources>
     <style name="style_text_regular_11sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
         <item name="android:textSize">@dimen/dimen_11sp</item>
         <item name="lineHeight">@dimen/dimen_13dp</item>
     </style>
+    <style name="style_text_regular_14sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_regular</item>
+        <item name="android:textColor">@color/primary_90</item>
+        <item name="android:textSize">@dimen/dimen_14sp</item>
+        <item name="lineHeight">@dimen/dimen_18dp</item>
+    </style>
     <style name="style_text_regular_18sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
+        <item name="android:textSize">@dimen/dimen_18sp</item>
+        <item name="lineHeight">@dimen/dimen_20dp</item>
+    </style>
+    <style name="style_text_regular_18sp_unselected" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_regular</item>
+        <item name="android:textColor">@color/primary_50</item>
         <item name="android:textSize">@dimen/dimen_18sp</item>
         <item name="lineHeight">@dimen/dimen_20dp</item>
     </style>
     <style name="style_text_regular_17sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
         <item name="android:textSize">@dimen/dimen_17sp</item>
         <item name="lineHeight">@dimen/dimen_20dp</item>
     </style>
     <style name="style_text_semibold_18sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_semibold</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
+        <item name="android:textSize">@dimen/dimen_18sp</item>
+        <item name="lineHeight">@dimen/dimen_20dp</item>
+    </style>
+    <style name="style_text_semibold_14sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_semibold</item>
+        <item name="android:textColor">@color/primary_90</item>
+        <item name="android:textSize">@dimen/dimen_14sp</item>
+        <item name="lineHeight">@dimen/dimen_20dp</item>
+    </style>
+    <style name="style_text_semibold_18sp_selected" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_semibold</item>
+        <item name="android:textColor">@color/primary_90</item>
+        <item name="android:textSize">@dimen/dimen_18sp</item>
+        <item name="lineHeight">@dimen/dimen_20dp</item>
+    </style>
+    <style name="style_text_semibold_18sp_unselected" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_semibold</item>
+        <item name="android:textColor">@color/primary_50</item>
         <item name="android:textSize">@dimen/dimen_18sp</item>
         <item name="lineHeight">@dimen/dimen_20dp</item>
     </style>
     <style name="style_text_regular_20sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
         <item name="android:textSize">@dimen/dimen_20sp</item>
         <item name="lineHeight">@dimen/dimen_20dp</item>
     </style>
     <style name="style_text_regular_24sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
         <item name="android:textSize">@dimen/dimen_24sp</item>
         <item name="lineHeight">@dimen/dimen_28dp</item>
     </style>
     <style name="style_text_regular_32sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_regular</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
         <item name="android:textSize">@dimen/dimen_32sp</item>
         <item name="lineHeight">@dimen/dimen_38dp</item>
     </style>
     <style name="style_text_bold_11sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
         <item name="android:textSize">@dimen/dimen_11sp</item>
         <item name="lineHeight">@dimen/dimen_13dp</item>
     </style>
+    <style name="style_text_bold_18sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_bold</item>
+        <item name="android:textColor">@color/primary_90</item>
+        <item name="android:textSize">@dimen/dimen_18sp</item>
+        <item name="lineHeight">@dimen/dimen_21dp</item>
+    </style>
     <style name="style_text_bold_24sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
         <item name="android:textSize">@dimen/dimen_24sp</item>
         <item name="lineHeight">@dimen/dimen_28dp</item>
     </style>
     <style name="style_text_bold_32sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
+        <item name="android:textSize">@dimen/dimen_32sp</item>
+        <item name="lineHeight">@dimen/dimen_38dp</item>
+    </style>
+    <style name="style_text_bold_36sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_bold</item>
+        <item name="android:textColor">@color/primary_90</item>
         <item name="android:textSize">@dimen/dimen_32sp</item>
         <item name="lineHeight">@dimen/dimen_38dp</item>
     </style>
     <style name="style_text_semibold_32sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_semibold</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
         <item name="android:textSize">@dimen/dimen_32sp</item>
+        <item name="lineHeight">@dimen/dimen_38dp</item>
+    </style>
+    <style name="style_text_semibold_28sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_semibold</item>
+        <item name="android:textColor">@color/primary_90</item>
+        <item name="android:textSize">@dimen/dimen_20sp</item>
         <item name="lineHeight">@dimen/dimen_38dp</item>
     </style>
     <style name="style_text_bold_48sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_bold</item>
-        <item name="android:textColor">@color/primary_reverse</item>
+        <item name="android:textColor">@color/primary_90</item>
         <item name="android:textSize">@dimen/dimen_48sp</item>
         <item name="lineHeight">@dimen/dimen_52dp</item>
     </style>
     <style name="style_text_bold_80sp" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/manrope_xbold</item>
-        <item name="android:textColor">@color/primary_reverse</item>
-        <item name="android:textSize">@dimen/dimen_120sp</item>
+        <item name="fontFamily">@font/linote_bold</item>
+        <item name="android:textColor">@color/primary_90</item>
+        <item name="android:textSize">100sp</item>
         <item name="lineHeight">@dimen/dimen_84dp</item>
     </style>
 
-    <dimen name="dimen_144sp">144sp</dimen>
-    <dimen name="dimen_24sp">24sp</dimen>
-    <dimen name="dimen_120sp">120sp</dimen>
-    <dimen name="dimen_32sp">32sp</dimen>
-    <dimen name="dimen_38dp">38dp</dimen>
-    <dimen name="dimen_14sp">14sp</dimen>
+    <dimen name="dimen_36sp">36sp</dimen>
 </resources>

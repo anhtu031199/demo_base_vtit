@@ -90,6 +90,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
                 onPositive.invoke()
             }
         dialog.show()
+        dialog.setCancelable (false)
         dialog.setCanceledOnTouchOutside(false)
         dialog.confirmButtonBackgroundColor = R.color.primary_reverse
         dialog.confirmButtonTextColor = R.color.primary

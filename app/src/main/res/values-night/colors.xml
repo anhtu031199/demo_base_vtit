@@ -1,21 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="transparent">#00000000</color>
-
-    <color name="primary">#111827</color>
-    <color name="primary_50">#80111827</color>
-    <color name="primary_reverse">#FFFFFF</color>
-    <color name="primary_reverse_50">#80FFFFFF</color>
-    <color name="primary_reverse_5">#1AFFFFFF</color>
-    <color name="secondary">#282B32</color>
-
-    <!--  Semantic  -->
-    <color name="success">#49BE20</color>
-    <color name="warning">#F58E16</color>
-    <color name="error">#FA3434</color>
-    <color name="info">#5C9CE6</color>
-    <color name="loading_progress">#00BCB4</color>
-
 </resources>

@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.tuna.nothingapp.base.BaseViewModel
+import com.tuna.nothingapp.data.local.DailyItemUI
+import com.tuna.nothingapp.data.local.HourlyItemUI
 import com.tuna.nothingapp.data.remote.request.CurrentLocationRequestBody
 import com.tuna.nothingapp.data.remote.request.WeatherRequestBody
 import com.tuna.nothingapp.data.remote.response.Current
@@ -13,8 +15,6 @@ import com.tuna.nothingapp.data.repository.WeatherRepository
 import com.tuna.nothingapp.navigation.NavigationCommand
 import com.tuna.nothingapp.ui.home.HomeFragmentDirections
 import com.tuna.nothingapp.ui.splash.SplashFragmentDirections
-import com.tuna.nothingapp.ui.viewPager.data.DailyItemUI
-import com.tuna.nothingapp.ui.viewPager.data.HourlyItemUI
 import com.tuna.nothingapp.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -33,11 +33,13 @@ class MainSharedViewModel @Inject constructor(
 ) : BaseViewModel(app) {
     private var _currentWeather = SingleLiveEvent<Current>()
     private var _currentLocation = SingleLiveEvent<String>()
+    private var _currentImg = SingleLiveEvent<String>()
     private var _currentTemp = SingleLiveEvent<Double>()
     private var _feelsLikeTemp = SingleLiveEvent<Int>()
     private var _windSpeed = SingleLiveEvent<Int>()
     private var _uvIndex = SingleLiveEvent<Double>()
     private var _humidity = SingleLiveEvent<Int>()
+    private var _pressure = SingleLiveEvent<Int>()
     private var _dateTime = SingleLiveEvent<String>()
     private var _longitude = SingleLiveEvent<Double>()
     private var _latitude = SingleLiveEvent<Double>()
@@ -50,11 +52,13 @@ class MainSharedViewModel @Inject constructor(
 
     val currentWeather: SingleLiveEvent<Current> = _currentWeather
     val currentLocation: SingleLiveEvent<String> = _currentLocation
+    val currentImg: SingleLiveEvent<String> = _currentImg
     val currentTemp: SingleLiveEvent<Double> = _currentTemp
     val feelsLikeTemp: SingleLiveEvent<Int> = _feelsLikeTemp
     val windSpeed: SingleLiveEvent<Int> = _windSpeed
     val uvIndex: SingleLiveEvent<Double> = _uvIndex
     val humidity: SingleLiveEvent<Int> = _humidity
+    val pressure: SingleLiveEvent<Int> = _pressure
     val dateTime: SingleLiveEvent<String> = _dateTime
     val hasLocationPermission: SingleLiveEvent<Boolean> = _hasLocationPermission
     val longitude: SingleLiveEvent<Double> = _longitude
@@ -62,11 +66,14 @@ class MainSharedViewModel @Inject constructor(
     val showLoading = SingleLiveEvent<Boolean>()
     val showErrorDialog = SingleLiveEvent<Boolean>()
     val hasData = SingleLiveEvent<Boolean>()
+    val showUV = SingleLiveEvent<Boolean>()
     val errorMessage: SingleLiveEvent<String> = _errorMessage
     val listHourlyForecast: MutableLiveData<List<HourlyItemUI>> = _listHourlyForecast
     val listDailyForecast: MutableLiveData<List<DailyItemUI>> = _listDailyForecast
 
     fun initData() {
+        val tomorrow = Calendar.getInstance()
+        tomorrow.add(Calendar.DATE, 1)
         viewModelScope.launch {
             showErrorDialog.value = false
             showLoading.value = true
@@ -78,24 +85,31 @@ class MainSharedViewModel @Inject constructor(
                     )
                 )
                 _currentWeather.postValue(weather.current)
+                _currentImg.postValue(weather.current.weather[0].icon)
                 _currentTemp.postValue(weather.current.temp)
                 _feelsLikeTemp.postValue(weather.current.feels_like.toInt())
                 _windSpeed.postValue(weather.current.wind_speed.toInt())
                 _uvIndex.postValue(weather.current.uvi)
                 _humidity.postValue(weather.current.humidity)
-                _listHourlyForecast.postValue(weather.hourly.map {
-                    HourlyItemUI(
-                        hourly = it,
-                        onClick = { item ->
-                            hourlyCallback?.onHourlyItemClick(item)
-                        }
-                    )
-                })
+                showUV.value = weather.current.uvi > 0.0
+                Timber.d("tuna: showUV ${showUV.value}")
+                _pressure.postValue(weather.current.pressure)
+                Timber.d("tuna: ${tomorrow.timeInMillis / 1000} / ${weather.hourly[0].dt}")
+                _listHourlyForecast.postValue(weather.hourly.filter { it.dt < tomorrow.timeInMillis / 1000 }
+                    .map {
+                        HourlyItemUI(
+                            hourly = it,
+                            timeZone = weather.timezone,
+                            onClick = { item ->
+                                hourlyCallback?.onHourlyItemClick(item)
+                            }
+                        )
+                    })
                 _listDailyForecast.postValue(weather.daily.map {
                     DailyItemUI(
                         daily = it,
                         onClick = { item ->
-                            dailyCallback?.onDailylyItemClick(item)
+                            dailyCallback?.onDailyItemClick(item)
                         }
                     )
                 })
@@ -104,7 +118,11 @@ class MainSharedViewModel @Inject constructor(
                 val location = currentLocationRepository.getCurrentLocationName(
                     CurrentLocationRequestBody("${_latitude.value},${_longitude.value}")
                 )
-                _currentLocation.postValue(location.items[0].address.district)
+                Timber.d("tuna: ${location.items[0]}")
+                _currentLocation.postValue(
+                    location.items[0].address.district ?: location.items[0].address.county
+                )
+                delay(500L)
                 showLoading.value = false
             } catch (e: Exception) {
                 hasData.value = false
@@ -124,10 +142,10 @@ class MainSharedViewModel @Inject constructor(
         )
     }
 
-    fun navigateHomeToForecast() {
+    fun navigateHomeToDaily() {
         navigate(
             NavigationCommand.To(
-                HomeFragmentDirections.actionHomeFragmentToForecastFragment()
+                HomeFragmentDirections.actionHomeFragmentToDailyFragment()
             )
         )
     }
@@ -156,8 +174,8 @@ class MainSharedViewModel @Inject constructor(
     }
 
     fun updateLocation(lat: Double, lon: Double) {
-        _latitude.value = lat
-        _longitude.value = lon
+        _latitude.postValue(lat)
+        _longitude.postValue(lon)
 //        initData()
     }
 
@@ -166,6 +184,6 @@ class MainSharedViewModel @Inject constructor(
     }
 
     interface DailyCallback {
-        fun onDailylyItemClick(item: DailyItemUI)
+        fun onDailyItemClick(item: DailyItemUI)
     }
 }

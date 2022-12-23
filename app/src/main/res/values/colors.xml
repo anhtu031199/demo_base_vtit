@@ -6,16 +6,22 @@
 
     <color name="primary">#FFFFFF</color>
     <color name="primary_50">#80FFFFFF</color>
+    <color name="primary_20">#66FFFFFF</color>
+    <color name="primary_90">#E6FFFFFF</color>
     <color name="primary_reverse">#111827</color>
     <color name="primary_reverse_50">#80111827</color>
-    <color name="primary_reverse_5">#0D111827</color>
+    <color name="primary_reverse_90">#E6111827</color>
+    <color name="primary_reverse_30">#4D111827</color>
+    <color name="primary_reverse_10">#1A111827</color>
     <color name="secondary">#A2B8DC</color>
-    <color name="color_bg_item_hourly">#3389AEFB</color>
+    <color name="color_bg_item_hourly">#4D81C9E6</color>
     <!--  Semantic  -->
     <color name="success">#49BE20</color>
     <color name="warning">#F58E16</color>
     <color name="error">#FA3434</color>
     <color name="info">#5C9CE6</color>
     <color name="loading_progress">#00BCB4</color>
+    <color name="gradient1">#BFB239</color>
+    <color name="gradient2">#CC20A8BA</color>
 
 </resources>

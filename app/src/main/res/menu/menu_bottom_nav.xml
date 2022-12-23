@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_now"
-        android:title="@string/now" />
-    <item
         android:id="@+id/menu_hourly"
         android:title="@string/hourly" />
     <item
         android:id="@+id/menu_daily"
         android:title="@string/daily" />
-    <item
-        android:id="@+id/menu_aqi"
-        android:title="@string/aqi" />
 </menu>
