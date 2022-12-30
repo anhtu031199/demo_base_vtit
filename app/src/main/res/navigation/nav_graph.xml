@@ -23,12 +23,12 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_home_fragment_to_city_list_fragment"
-            app:destination="@id/city_list_fragment"
-            app:enterAnim="@anim/slide_in_up"
+            android:id="@+id/action_home_fragment_to_location_fragment"
+            app:destination="@id/location_fragment"
+            app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/hold"
             app:popEnterAnim="@anim/hold"
-            app:popExitAnim="@anim/slide_in_down" />
+            app:popExitAnim="@anim/slide_in_left" />
         <action
             android:id="@+id/action_home_fragment_to_setting_fragment"
             app:destination="@id/setting_fragment"
@@ -45,10 +45,18 @@
             app:popExitAnim="@anim/slide_in_left" />
     </fragment>
     <fragment
-        android:id="@+id/city_list_fragment"
-        android:name="com.tuna.nothingapp.ui.cityList.CityListFragment"
-        android:label="CityListFragment"
-        tools:layout="@layout/fragment_city_list" />
+        android:id="@+id/location_fragment"
+        android:name="com.tuna.nothingapp.ui.location.LocationFragment"
+        android:label="LocationFragment"
+        tools:layout="@layout/fragment_location">
+        <action
+            android:id="@+id/action_location_fragment_to_add_location_fragment"
+            app:destination="@id/add_location_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/hold"
+            app:popEnterAnim="@anim/hold"
+            app:popExitAnim="@anim/slide_in_left" />
+    </fragment>
     <fragment
         android:id="@+id/setting_fragment"
         android:name="com.tuna.nothingapp.ui.setting.SettingFragment"
@@ -59,5 +67,10 @@
         android:name="com.tuna.nothingapp.ui.daily.DailyFragment"
         android:label="DailyFragment"
         tools:layout="@layout/fragment_daily" />
+    <fragment
+        android:id="@+id/add_location_fragment"
+        android:name="com.tuna.nothingapp.ui.addLocation.AddLocationFragment"
+        android:label="AddLocationFragment"
+        tools:layout="@layout/fragment_add_location" />
 
 </navigation>

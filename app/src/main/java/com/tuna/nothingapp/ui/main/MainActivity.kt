@@ -1,87 +1,76 @@
 package com.tuna.nothingapp.ui.main
 
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
 import androidx.activity.viewModels
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority.PRIORITY_HIGH_ACCURACY
+import com.tbruyelle.rxpermissions3.RxPermissions
 import com.tuna.nothingapp.BR
 import com.tuna.nothingapp.R
 import com.tuna.nothingapp.base.BaseActivity
 import com.tuna.nothingapp.databinding.ActivityMainBinding
+import com.tuna.nothingapp.utils.hasLocationPermission
 import com.tuna.nothingapp.utils.hasPermission
 import com.tuna.nothingapp.viewmodel.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import pub.devrel.easypermissions.EasyPermissions
 import timber.log.Timber
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<MainSharedViewModel, ActivityMainBinding>(),
-    EasyPermissions.PermissionCallbacks {
+class MainActivity : BaseActivity<MainSharedViewModel, ActivityMainBinding>() {
     override val viewModel: MainSharedViewModel by viewModels()
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
     override fun getViewModelBindingVariable(): Int = BR._all
-    private lateinit var fusedLocationProvider: FusedLocationProviderClient
+
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+
     override fun initView() {
-        fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this@MainActivity)
     }
 
     @SuppressLint("MissingPermission")
     override fun initData() {
-        initPermission(ACCESS_FINE_LOCATION)
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        checkPermission()
     }
 
-    private fun initPermission(permission: String) {
-        if (!hasPermission(permission)) {
-            requestPermissions(arrayOf(permission), permission.length)
+    private fun checkPermission() {
+        if (!hasLocationPermission()) {
+            initPermission()
         } else {
             onRequestPermissionSuccess()
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
+    private fun initPermission() {
+        val rxPermission = RxPermissions(this)
+        rxPermission
+            .request(
+                ACCESS_FINE_LOCATION,
+                ACCESS_COARSE_LOCATION
+            )
+            .subscribe(
+                {
+                    onRequestPermissionSuccess()
+                },
+                {
+                    Timber.d("tuna: onFail")
+                })
     }
 
-    @SuppressLint("MissingPermission")
-    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-        when (requestCode) {
-            ACCESS_FINE_LOCATION.length -> {
-                Timber.d("tuna: ACCESS_FINE_LOCATION granted")
-                onRequestPermissionSuccess()
-            }
-        }
-    }
-
-    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
-            when (requestCode) {
-                ACCESS_FINE_LOCATION.length -> Timber.d("tuna: ACCESS_FINE_LOCATION denied")
-            }
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    fun onRequestPermissionSuccess() {
-        fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this@MainActivity)
-        fusedLocationProvider.lastLocation.addOnCompleteListener {
-            if (it.isSuccessful) {
-                if (it.result != null) {
-                    viewModel.updateLocation(it.result.latitude, it.result.longitude)
-                    Timber.d("tuna: onSuccess")
-                }
-            } else {
-                Timber.d("tuna: onFail")
-            }
-        }
+    private fun onRequestPermissionSuccess() {
         viewModel.hasLocationPermission()
+        val location = fusedLocationProviderClient.getCurrentLocation(PRIORITY_HIGH_ACCURACY, null)
+//        val location = fusedLocationProviderClient.lastLocation
+        location.addOnSuccessListener {
+            if (it != null) {
+                viewModel.updateLocation(it.latitude, it.longitude)
+                Timber.d("tuna: onSuccess")
+            }
+        }
         Timber.d("tuna: get Location success")
     }
 }

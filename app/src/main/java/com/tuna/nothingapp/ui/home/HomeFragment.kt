@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.tuna.nothingapp.BR
 import com.tuna.nothingapp.R
 import com.tuna.nothingapp.base.BaseFragment
-import com.tuna.nothingapp.data.local.HourlyItemUI
+import com.tuna.nothingapp.data.local.model.HourlyItemUI
 import com.tuna.nothingapp.databinding.FragmentHomeBinding
 import com.tuna.nothingapp.extensions.orDefault
 import com.tuna.nothingapp.viewmodel.MainSharedViewModel
@@ -83,6 +83,7 @@ class HomeFragment : BaseFragment<MainSharedViewModel, FragmentHomeBinding>(), M
                 viewModel.initData()
             }
         }
+        viewModel.demoLocationList()
     }
 
     override fun onHourlyItemClick(item: HourlyItemUI) {

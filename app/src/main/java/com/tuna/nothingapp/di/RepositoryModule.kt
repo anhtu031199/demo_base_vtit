@@ -1,9 +1,11 @@
 package com.tuna.nothingapp.di
 
 import com.tuna.nothingapp.data.repository.CurrentLocationRepository
+import com.tuna.nothingapp.data.repository.LocationRepository
 import com.tuna.nothingapp.data.repository.SearchLocationRepository
 import com.tuna.nothingapp.data.repository.WeatherRepository
 import com.tuna.nothingapp.data.repository.impl.CurrentLocationRepositoryImpl
+import com.tuna.nothingapp.data.repository.impl.LocationRepositoryImpl
 import com.tuna.nothingapp.data.repository.impl.SearchLocationRepositoryImpl
 import com.tuna.nothingapp.data.repository.impl.WeatherRepositoryImpl
 import dagger.Binds
@@ -18,6 +20,11 @@ abstract class RepositoryModule {
     abstract fun bindWeatherRepository(
         myRepositoryImpl: WeatherRepositoryImpl
     ): WeatherRepository
+
+    @Binds
+    abstract fun bindLocationRepository(
+        myRepositoryImpl: LocationRepositoryImpl
+    ): LocationRepository
 
     @Binds
     abstract fun bindSearchLocationRepository(

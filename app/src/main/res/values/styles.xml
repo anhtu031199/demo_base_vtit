@@ -120,6 +120,12 @@
         <item name="android:textSize">@dimen/dimen_48sp</item>
         <item name="lineHeight">@dimen/dimen_52dp</item>
     </style>
+    <style name="style_text_bold_64sp" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/linote_bold</item>
+        <item name="android:textColor">@color/primary_90</item>
+        <item name="android:textSize">@dimen/dimen_64sp</item>
+        <item name="lineHeight">@dimen/dimen_52dp</item>
+    </style>
     <style name="style_text_bold_80sp" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/linote_bold</item>
         <item name="android:textColor">@color/primary_90</item>
@@ -128,4 +134,5 @@
     </style>
 
     <dimen name="dimen_36sp">36sp</dimen>
+    <dimen name="dimen_64sp">64sp</dimen>
 </resources>

@@ -10,13 +10,11 @@ object BuildPlugins {
 object Versions {
     const val minSdkVersion = 26
     const val compileSdkVersion = 32
-    const val targetSdkVersion = 31
-    const val buildToolsVersion = "31.0.0"
+    const val targetSdkVersion = 32
 
     const val androidGradlePlugin = "7.1.3"
     const val kotlinGradlePlugin = "1.6.10"
     const val ktlintGradlePlugin = "10.2.1"
-    const val butterknifeGradlePlugin = "10.2.3"
     const val googleServices = "4.3.13"
     const val firebaseCrashlyticsGradle = "2.8.1"
 
@@ -86,8 +84,6 @@ object Deps {
         "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinGradlePlugin}"
     const val ktlintGradlePlugin =
         "org.jlleitschuh.gradle:ktlint-gradle:${Versions.ktlintGradlePlugin}"
-    const val butterknifeGradlePlugin =
-        "com.jakewharton:butterknife-gradle-plugin:${Versions.butterknifeGradlePlugin}"
     const val googleServices = "com.google.gms:google-services:${Versions.googleServices}"
     const val firebaseCrashlyticsGradle =
         "com.google.firebase:firebase-crashlytics-gradle:${Versions.firebaseCrashlyticsGradle}"
@@ -139,7 +135,8 @@ object Deps {
     const val rxpermissions = "com.github.tbruyelle:rxpermissions:${Versions.rxpermissions}"
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    const val glideTransformation = "jp.wasabeef:glide-transformations:${Versions.glideTransformation}"
+    const val glideTransformation =
+        "jp.wasabeef:glide-transformations:${Versions.glideTransformation}"
     const val coil = "io.coil-kt:coil:${Versions.coil}"
 
     const val sdpAndroid = "com.intuit.sdp:sdp-android:${Versions.sdpAndroid}"
@@ -174,7 +171,8 @@ object Deps {
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
     const val viewPager = "androidx.viewpager2:viewpager2:${Versions.viewPager}"
-    const val locationServices = "com.google.android.gms:play-services-location:${Versions.locationServices}"
+    const val locationServices =
+        "com.google.android.gms:play-services-location:${Versions.locationServices}"
     const val sweetDialog = "com.github.f0ris.sweetalert:library:${Versions.sweetDialog}"
     const val cardview = "androidx.cardview:cardview:${Versions.cardview}"
     const val easyPermission = "pub.devrel:easypermissions:${Versions.easyPermission}"

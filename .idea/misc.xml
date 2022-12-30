@@ -23,6 +23,7 @@
         <entry key="app/src/main/res/drawable/bg_linear_5.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/bg_view.xml" value="0.2805" />
         <entry key="app/src/main/res/drawable/bg_viewpager.xml" value="0.28" />
+        <entry key="app/src/main/res/drawable/color_cursor.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/ic_cloud.xml" value="0.264" />
         <entry key="app/src/main/res/drawable/ic_clouds_1.xml" value="0.264" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.2005" />
@@ -43,6 +44,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.264" />
         <entry key="app/src/main/res/drawable/ic_location.xml" value="0.264" />
         <entry key="app/src/main/res/drawable/ic_low.xml" value="0.264" />
+        <entry key="app/src/main/res/drawable/ic_place.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/ic_rain.xml" value="0.264" />
         <entry key="app/src/main/res/drawable/ic_small_cloud.xml" value="0.28" />
         <entry key="app/src/main/res/drawable/ic_small_cloudy.xml" value="0.28" />
@@ -63,6 +65,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.21546052631578946" />
         <entry key="app/src/main/res/layout/dialog_progress_loading.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_add_location.xml" value="0.21546052631578946" />
         <entry key="app/src/main/res/layout/fragment_aqi.xml" value="0.28003420265070544" />
         <entry key="app/src/main/res/layout/fragment_city_list.xml" value="0.21546052631578946" />
         <entry key="app/src/main/res/layout/fragment_daily.xml" value="0.21335504885993486" />
@@ -70,14 +73,18 @@
         <entry key="app/src/main/res/layout/fragment_forecast.xml" value="0.28003420265070544" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_hourly.xml" value="0.28003420265070544" />
+        <entry key="app/src/main/res/layout/fragment_location.xml" value="0.21546052631578946" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_now.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.28003420265070544" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.21546052631578946" />
         <entry key="app/src/main/res/layout/item_daily.xml" value="0.28003420265070544" />
         <entry key="app/src/main/res/layout/item_forecast.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/item_history_search_location.xml" value="0.21480263157894736" />
         <entry key="app/src/main/res/layout/item_hourly.xml" value="0.2757130509939499" />
         <entry key="app/src/main/res/layout/item_list_hourly_forecast.xml" value="0.21546052631578946" />
+        <entry key="app/src/main/res/layout/item_location.xml" value="0.21480263157894736" />
+        <entry key="app/src/main/res/layout/item_location_search_history.xml" value="0.21480263157894736" />
         <entry key="app/src/main/res/menu/menu_bottom_nav.xml" value="0.28003420265070544" />
       </map>
     </option>

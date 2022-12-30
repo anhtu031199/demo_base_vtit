@@ -11,15 +11,15 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
         <androidx.appcompat.widget.AppCompatImageView
-            app:backgroundImg="@{viewModel.currentImg}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
+            app:backgroundImg="@{viewModel.currentImg}"
             tools:src="@drawable/bg_d" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -71,11 +71,11 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center"
                         android:layout_centerInParent="true"
                         android:layout_marginHorizontal="@dimen/dimen_12dp"
                         android:layout_toStartOf="@id/btn_home_cityList"
                         android:layout_toEndOf="@id/btn_home_setting"
+                        android:gravity="center"
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -186,7 +186,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="@dimen/dimen_12dp"
                         android:elevation="@dimen/dimen_20dp"
-                        android:onClick="@{() -> viewModel.navigateHomeToCityList()}"
+                        android:onClick="@{() -> viewModel.navigateHomeToLocation()}"
                         app:cardBackgroundColor="@color/transparent"
                         app:cardCornerRadius="@dimen/dimen_90dp">
 
@@ -194,9 +194,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:alpha="80"
-                            android:src="@drawable/ic_place"
                             android:background="@drawable/bg_button_primary"
-                            android:padding="@dimen/dimen_8dp" />
+                            android:padding="@dimen/dimen_8dp"
+                            android:src="@drawable/ic_place" />
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
 
@@ -231,12 +231,12 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_current_weather"
                     style="@style/style_text_bold_32sp"
+                    textCapitalize="@{viewModel.currentWeather.weather.get(0).description}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/dimen_12dp"
                     android:includeFontPadding="false"
-                    android:text="@{viewModel.currentWeather.weather.get(0).main}"
                     app:layout_constraintBottom_toTopOf="@id/view_info_now"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -332,12 +332,12 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/view_info_pressure"
+                        isShow="@{!viewModel.showUV}"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="10dp"
-                        isShow="@{!viewModel.showUV}"
                         app:layout_constraintEnd_toEndOf="@id/guideline_75_ver_info"
                         app:layout_constraintStart_toStartOf="@id/guideline_50_ver_info">
 
@@ -361,12 +361,12 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/view_info_uvindex"
+                        isShow="@{viewModel.showUV}"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="10dp"
-                        isShow="@{viewModel.showUV}"
                         app:layout_constraintEnd_toEndOf="@id/guideline_75_ver_info"
                         app:layout_constraintStart_toStartOf="@id/guideline_50_ver_info">
 

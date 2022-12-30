@@ -2,7 +2,7 @@
     <string name="app_name">Today.io</string>
     <string name="degree">°</string>
     <string name="dot">•</string>
-    <string name="feels_like">Real feel&#160;</string>
+    <string name="feels_like">Feels like&#160;</string>
     <string name="now">Now</string>
     <string name="hourly">Hourly</string>
     <string name="daily">Daily</string>
@@ -24,4 +24,5 @@
     <string name="next_7_days">Next 7 days ➤</string>
     <string name="this_week">This week</string>
     <string name="search_location">Search places</string>
+    <string name="favorite_location">Saved Locations</string>
 </resources>

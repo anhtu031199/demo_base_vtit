@@ -1,11 +1,28 @@
 package com.tuna.nothingapp.data.remote.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
+import com.tuna.nothingapp.utils.Converter
 
+@Entity(tableName = "weather")
 data class WeatherResponse(
-    @SerializedName("current") val current: Current,
-    @SerializedName("daily") val daily: List<Daily>,
-    @SerializedName("hourly") val hourly: List<Hourly>,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int? = null,
+
+    @TypeConverters(Converter::class)
+    @SerializedName("current")
+    val current: Current? = null,
+
+    @TypeConverters(Converter::class)
+    @SerializedName("daily")
+    val daily: List<Daily>? = null,
+
+    @TypeConverters(Converter::class)
+    @SerializedName("hourly")
+    val hourly: List<Hourly>? = null,
+
     @SerializedName("lat") val lat: Double,
     @SerializedName("lon") val lon: Double,
     @SerializedName("timezone") val timezone: String,
@@ -25,7 +42,7 @@ data class Current(
     @SerializedName("temp") val temp: Double,
     @SerializedName("uvi") val uvi: Double,
     @SerializedName("visibility") val visibility: Int,
-    @SerializedName("weather") val weather: List<Weather>,
+    @SerializedName("weather") val weather: List<Weather>? = null,
     @SerializedName("wind_deg") val wind_deg: Int,
     @SerializedName("wind_gust") val wind_gust: Double,
     @SerializedName("wind_speed") val wind_speed: Double
@@ -35,7 +52,7 @@ data class Daily(
     @SerializedName("clouds") val clouds: Int,
     @SerializedName("dew_point") val dew_point: Double,
     @SerializedName("dt") val dt: Long,
-    @SerializedName("feels_like") val feels_like: FeelsLike,
+    @SerializedName("feels_like") val feels_like: FeelsLike? = null,
     @SerializedName("humidity") val humidity: Int,
     @SerializedName("moon_phase") val moon_phase: Double,
     @SerializedName("moonrise") val moonrise: Int,
@@ -47,7 +64,7 @@ data class Daily(
     @SerializedName("sunset") val sunset: Int,
     @SerializedName("temp") val temp: Temp,
     @SerializedName("uvi") val uvi: Double,
-    @SerializedName("weather") val weather: List<Weather>,
+    @SerializedName("weather") val weather: List<Weather>? = null,
     @SerializedName("wind_deg") val wind_deg: Int,
     @SerializedName("wind_gust") val wind_gust: Double,
     @SerializedName("wind_speed") val wind_speed: Double

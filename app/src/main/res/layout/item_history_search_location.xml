@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txt_history_search_location"
+            style="@style/style_text_regular_18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:paddingVertical="@dimen/dimen_3dp"
+            android:paddingHorizontal="@dimen/dimen_5dp"
+            android:layout_margin="@dimen/dimen_5dp"
+            android:background="@drawable/bg_button_primary"
+            android:textColor="@color/primary_reverse_90"
+            tools:text="Hanoi" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

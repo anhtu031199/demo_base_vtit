@@ -6,7 +6,7 @@
 
         <variable
             name="itemUi"
-            type="com.tuna.nothingapp.data.local.HourlyItemUI" />
+            type="com.tuna.nothingapp.data.local.model.HourlyItemUI" />
     </data>
 
     <FrameLayout

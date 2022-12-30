@@ -1,4 +1,4 @@
-package com.tuna.nothingapp.data.local
+package com.tuna.nothingapp.data.local.model
 
 import com.tuna.nothingapp.R
 import com.tuna.nothingapp.base.adapter.BaseItemModel

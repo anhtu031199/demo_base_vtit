@@ -1,32 +1,27 @@
-package com.tuna.nothingapp.ui.daily
+package com.tuna.nothingapp.ui.addLocation
 
 import androidx.fragment.app.activityViewModels
 import com.tuna.nothingapp.BR
 import com.tuna.nothingapp.R
 import com.tuna.nothingapp.base.BaseFragment
-import com.tuna.nothingapp.databinding.FragmentDailyBinding
-import com.tuna.nothingapp.data.local.model.DailyItemUI
+import com.tuna.nothingapp.databinding.FragmentAddLocationBinding
+import com.tuna.nothingapp.databinding.FragmentSettingBinding
 import com.tuna.nothingapp.viewmodel.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DailyFragment : BaseFragment<MainSharedViewModel, FragmentDailyBinding>(),
-    MainSharedViewModel.DailyCallback {
+class AddLocationFragment : BaseFragment<MainSharedViewModel, FragmentAddLocationBinding>() {
     override val viewModel: MainSharedViewModel by activityViewModels()
 
-    override fun getLayoutId(): Int = R.layout.fragment_daily
+    override fun getLayoutId(): Int = R.layout.fragment_add_location
 
     override fun getViewModelBindingVariable(): Int = BR.viewModel
 
     override fun initView() {
-        viewModel.dailyCallback = this
     }
 
     override fun initData() {
-    }
 
-    override fun onDailyItemClick(item: DailyItemUI) {
-        showToast("Details dialog coming soon")
     }
 
 }

@@ -1,4 +1,4 @@
-package com.tuna.nothingapp.data.local
+package com.tuna.nothingapp.data.local.model
 
 import com.tuna.nothingapp.R
 import com.tuna.nothingapp.base.adapter.BaseItemModel
@@ -9,8 +9,9 @@ data class DailyItemUI(
     val onClick: (DailyItemUI) -> Unit
 ) : BaseItemModel {
     val dt: Long = daily.dt
-    val main: String = daily.weather[0].main
-    val icon: String = daily.weather[0].icon
+    val temp: Double = daily.temp.day
+    val main: String? = daily.weather?.getOrNull(0)?.main
+    val icon: String? = daily.weather?.getOrNull(0)?.icon
     val maxTemp: Int = daily.temp.max.toInt()
     val minTemp: Int = daily.temp.min.toInt()
 

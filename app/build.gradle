@@ -75,6 +75,7 @@ dependencies {
     api Deps.recyclerview
     api Deps.roomKtx
     api Deps.roomRuntime
+    kapt Deps.roomCompiler
     api Deps.retrofit
     api Deps.converterGson
     api Deps.okhttpUrlconnection

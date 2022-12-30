@@ -17,7 +17,7 @@ import java.util.*
 @BindingAdapter("textTime", "timeZone")
 fun TextView.setTimeFromText(textTime: Long?, timeZone: String?) {
     textTime?.let {
-        val sdf = SimpleDateFormat("ha", Locale.US)
+        val sdf = SimpleDateFormat("ha", Locale.getDefault())
         timeZone?.let {
             sdf.timeZone = TimeZone.getTimeZone(timeZone)
         }
@@ -33,7 +33,18 @@ fun TextView.setTimeFromText(textTime: Long?, timeZone: String?) {
 fun TextView.setDateOfWeekFromText(textDate: Long?) {
     textDate?.let {
         this.text =
-            SimpleDateFormat("EEE", Locale.US).format(Date((textDate * 1000)))
+            SimpleDateFormat("EEE", Locale.getDefault()).format(Date((textDate * 1000)))
+    }
+        ?: kotlin.run {
+            this.text = "--"
+        }
+}
+
+@BindingAdapter("textDate")
+fun TextView.setDateFromText(textDate: Long?) {
+    textDate?.let {
+        this.text =
+            SimpleDateFormat("EEEE, d MMMM", Locale.getDefault()).format(Date((textDate * 1000)))
     }
         ?: kotlin.run {
             this.text = "--"
@@ -44,7 +55,7 @@ fun TextView.setDateOfWeekFromText(textDate: Long?) {
 fun TextView.setDateOfMonthFromText(textDate: Long?) {
     textDate?.let {
         this.text =
-            SimpleDateFormat("d MMM", Locale.US).format(Date((textDate * 1000)))
+            SimpleDateFormat("d MMM", Locale.getDefault()).format(Date((textDate * 1000)))
     }
         ?: kotlin.run {
             this.text = "--"
@@ -126,4 +137,9 @@ fun ImageView.setBackground(backgroundImg: String?) {
     } ?: run {
         Glide.with(context).load(R.drawable.bg_n).fitCenter().into(this)
     }
+}
+
+@BindingAdapter("textCapitalize")
+fun TextView.toCapitalize(text: String?){
+    this.text = text?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
 }
