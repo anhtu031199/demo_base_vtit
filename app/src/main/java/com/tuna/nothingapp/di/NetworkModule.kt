@@ -56,7 +56,7 @@ class NetworkModule {
     ): SearchLocationService = Retrofit.Builder()
         .addConverterFactory(gsonConverterFactory)
         .client(okHttpClient)
-        .baseUrl(BuildConfig.BASE_SEARCH_LOCATION_URL)
+        .baseUrl(BuildConfig.BASE_WEATHER_URL)
         .build()
         .create(SearchLocationService::class.java)
 
@@ -68,7 +68,7 @@ class NetworkModule {
     ): CurrentLocationService = Retrofit.Builder()
         .addConverterFactory(gsonConverterFactory)
         .client(okHttpClient)
-        .baseUrl(BuildConfig.BASE_CURRENT_LOCATION_URL)
+        .baseUrl(BuildConfig.BASE_WEATHER_URL)
         .build()
         .create(CurrentLocationService::class.java)
 

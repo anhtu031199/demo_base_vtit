@@ -6,5 +6,5 @@ import com.tuna.nothingapp.BuildConfig
 data class SearchLocationRequestBody(
     var q: String,
     @SerializedName("apiKey")
-    var apiKey: String = BuildConfig.MAP_KEY
+    var apiKey: String = BuildConfig.WEATHER_KEY
 )
